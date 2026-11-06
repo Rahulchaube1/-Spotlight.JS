@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+---
+
+<BaseLayout
+  title="404 — Lost in the Dark | Spotlight.js"
+  description="Even our spotlight couldn't illuminate this page. Let's guide you back to safety."
+  permalink="/404"
+>
+  <div class="bg-card border-b border-border select-none">
+    <Container>
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="flex items-center" aria-label="Spotlight.js Home">
+          <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-10 sm:h-12 w-auto object-contain rounded-lg transition-transform hover:scale-105" />
+        </a>
+        <div class="flex items-center gap-3 sm:gap-5">
+          <a href="/docs/installation" class="rounded-xl px-3 sm:px-4 py-2 text-sm sm:text-base font-semibold text-foreground transition-colors hover:bg-muted">
+            Documentation
+          </a>
+          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm font-bold hover:opacity-90 shadow-sm transition-all">
+            Sponsor
+          </a>
+          <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="text-foreground hover:text-primary transition-colors p-2 rounded-xl hover:bg-muted">
+            <svg viewBox="0 0 496 512" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+              <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </Container>
+  </div>
+
+  <main class="relative min-h-[calc(100vh-10rem)] overflow-hidden bg-gradient-to-b from-background via-card to-background flex items-center justify-center py-16 px-4">
+    <!-- Cinematic overhead spotlight beam effect -->
+    <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-primary/20 rounded-full blur-[140px] opacity-80 animate-pulse"></div>
+    <div class="pointer-events-none absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-primary/10 rounded-full blur-[130px] opacity-50"></div>
+
+    <div class="relative z-10 max-w-3xl w-full text-center mx-auto">
+      <!-- Cute animated mascot / spotlight scene -->
+      <div class="relative inline-block mb-6">
+        <div class="relative mx-auto w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-br from-card via-muted to-card border-2 border-primary/30 p-4 shadow-2xl flex items-center justify-center group">
+          <!-- Spotlight cone shining down onto the mascot -->
+          <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-28 h-20 bg-gradient-to-b from-primary/30 to-transparent blur-md opacity-80 pointer-events-none"></div>
+          
+          <img
+            id="mascot-img"
+            src="/fox-looking.gif"
+            alt="Confused mascot looking around in the dark"
+            class="w-28 h-28 sm:w-32 sm:h-32 object-contain select-none drop-shadow-md transition-transform group-hover:scale-110"
+          />
+
+          <!-- Cute question badge -->
+          <span class="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-black text-sm shadow-md animate-bounce">
+            ?
+          </span>
+        </div>
+      </div>
+
+      <!-- 404 Headline -->
+      <div id="target-404-title" class="inline-block">
+        <h1 class="text-7xl sm:text-9xl font-black tracking-tight text-foreground mb-3 font-mono">
+          4<span class="text-primary inline-block hover:rotate-12 transition-transform cursor-pointer">0</span>4
+        </h1>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
+        Even our Spotlight couldn't find this page!
+      </h2>
+
+      <p class="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
+        We turned the brightness up to 100%, scanned every DOM node, and even checked behind <code class="rounded bg-muted px-1.5 py-0.5 text-xs sm:text-sm font-mono text-foreground border border-border">document.body</code>. This route is completely in the dark.
+      </p>
+
+      <!-- Funny DOM diagnostic snippet -->
+      <div class="mb-10 max-w-lg mx-auto overflow-hidden rounded-2xl border border-border bg-slate-950 p-4 text-left font-mono text-xs sm:text-sm text-slate-300 shadow-xl backdrop-blur-sm">
+        <div class="flex items-center gap-2 pb-3 mb-3 border-b border-slate-800">
+          <span class="h-3 w-3 rounded-full bg-red-500"></span>
+          <span class="h-3 w-3 rounded-full bg-amber-500"></span>
+          <span class="h-3 w-3 rounded-full bg-emerald-500"></span>
+          <span class="text-xs text-slate-500 ml-2">console.log(lostRoute)</span>
+        </div>
+        <p class="text-emerald-400">&gt; spotlight.locate("<span id="current-path" class="text-amber-300">/unknown</span>")</p>
+        <p class="text-rose-400 mt-1">&gt; Error: 404_PAGE_LOST_IN_THE_DARK</p>
+        <p class="text-slate-400 mt-1">&gt; Result: 0 elements matched. Returning to safe coordinates...</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          id="target-home-btn"
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-base sm:text-lg font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-95 hover:shadow-xl active:scale-95"
+        >
+          Take Me Home &rarr;
+        </a>
+
+        <button
+          id="btn-spotlight-rescue"
+          type="button"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-8 py-4 text-base sm:text-lg font-bold text-foreground shadow-xs transition-all hover:bg-muted hover:border-primary/50 active:scale-95 cursor-pointer"
+        >
+          <span>🔦</span>
+          <span>Spotlight the Exit</span>
+        </button>
+
+        <a
+          href="/docs/installation"
+          class="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl border border-border bg-card px-6 py-4 text-base sm:text-lg font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-muted"
+        >
+          Explore Docs
+        </a>
+      </div>
+
+      <!-- Help links -->
+      <div class="mt-12 text-sm text-muted-foreground flex items-center justify-center gap-6">
+        <a href="https://github.com/Rahulchaube1/-Spotlight.JS/issues" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors underline underline-offset-4">
+          Report broken link
+        </a>
+        <span>•</span>
+        <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors underline underline-offset-4">
+          Rahul Chaube Portfolio
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive 404 Rescue Tour Script powered by Spotlight.js -->
+  <script>
+    import { spotlight } from "spotlight.js";
+    import "spotlight.js/dist/spotlight.css";
+
+    // Show current pathname in console snippet
+    const pathEl = document.getElementById("current-path");
+    if (pathEl && typeof window !== "undefined") {
+      pathEl.textContent = window.location.pathname;
+    }
+
+    const rescueBtn = document.getElementById("btn-spotlight-rescue");
+    if (rescueBtn) {
+      rescueBtn.addEventListener("click", () => {
+        const rescueTour = spotlight({
+          animate: true,
+          sound: true,
+          confetti: true,
+          showProgress: true,
+          steps: [
+            {
+              element: "#target-404-title",
+              popover: {
+                title: "404 Confirmed! 🕵️",
+                description: "Yep, this page is definitely not here. It probably went out for coffee or got deleted by accident.",
+                side: "bottom",
+                align: "center",
+              },
+            },
+            {
+              element: "#mascot-img",
+              popover: {
+                title: "Even our mascot is confused 🦊",
+                description: "Looking left, looking right... nothing but void. Good thing you have a spotlight!",
+                side: "bottom",
+                align: "center",
+              },
+            },
+            {
+              element: "#target-home-btn",
+              popover: {
+                title: "Safe Haven Ahead! 🚀",
+                description: "Click here to return to safety. All roads lead back to Spotlight.js homepage!",
+                side: "top",
+                align: "center",
+              },
+            },
+          ],
+        });
+
+        rescueTour.drive();
+      });
+    }
+  </script>
+</BaseLayout>
