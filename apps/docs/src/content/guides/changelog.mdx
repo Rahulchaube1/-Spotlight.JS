@@ -152,7 +152,7 @@ ships, these entries move under a versioned heading.
   ([#489](https://github.com/Rahulchaube1/-Spotlight.JS/issues/489),
   [#395](https://github.com/Rahulchaube1/-Spotlight.JS/issues/395))
 - `index` on the options passed to every hook, holding the currently active
-  step index (same value as `driverObj.getActiveIndex()`).
+  step index (same value as `tour.getActiveIndex()`).
   ([#490](https://github.com/Rahulchaube1/-Spotlight.JS/issues/490))
 - `--driver-popover-font-family` CSS variable to set the popover font in one
   place, without overriding each text element individually.
@@ -191,7 +191,7 @@ ships, these entries move under a versioned heading.
 ### Changed
 
 - <span class="breaking-badge">Breaking</span> Popover footer buttons are now styled through the
-  `driver-popover-footer-btn` class instead of the `.driver-popover-footer button` selector. Buttons you add through
+  `driver-popover-footer-btn` class instead of the `.spotlight-popover-footer button` selector. Buttons you add through
   `onPopoverRender` no longer inherit the default styling automatically. Add the `driver-popover-footer-btn` class to
   opt in, or leave it off to apply your own styles. The built-in next/previous buttons carry the class out of the box.
   ([#555](https://github.com/Rahulchaube1/-Spotlight.JS/issues/555))

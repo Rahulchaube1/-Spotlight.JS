@@ -1,11 +1,12 @@
 {
-  "name": "driver.js",
+  "name": "spotlight.js",
   "license": "MIT",
   "private": false,
   "version": "1.10.2",
-  "main": "./dist/driver.js.cjs",
-  "module": "./dist/driver.js.mjs",
-  "types": "./dist/driver.js.d.ts",
+  "description": "The modern, zero-dependency JavaScript engine for interactive product tours, multi-element spotlights, tour persistence, and onboarding checklists.",
+  "main": "./dist/spotlight.js.cjs",
+  "module": "./dist/spotlight.js.mjs",
+  "types": "./dist/spotlight.js.d.ts",
   "homepage": "https://Spotlightjs.rahulchaube1.com",
   "repository": {
     "type": "git",
@@ -22,12 +23,12 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/driver.js.d.mts",
-        "default": "./dist/driver.js.mjs"
+        "types": "./dist/spotlight.js.d.mts",
+        "default": "./dist/spotlight.js.mjs"
       },
       "require": {
-        "types": "./dist/driver.js.d.cts",
-        "default": "./dist/driver.js.cjs"
+        "types": "./dist/spotlight.js.d.cts",
+        "default": "./dist/spotlight.js.cjs"
       }
     },
     "./hints": {
@@ -49,6 +50,11 @@
         "types": "./dist/checklist.d.cts",
         "default": "./dist/checklist.cjs"
       }
+    },
+    "./dist/spotlight.css": {
+      "import": "./dist/spotlight.css",
+      "require": "./dist/spotlight.css",
+      "default": "./dist/spotlight.css"
     },
     "./dist/driver.css": {
       "import": "./dist/driver.css",
@@ -97,19 +103,24 @@
     "vitest": "^4.1.9"
   },
   "keywords": [
+    "spotlight.js",
+    "spotlight",
     "driver.js",
-    "driver",
+    "product tour",
+    "user onboarding",
     "tour",
     "guide",
-    "overlay",
-    "tooltip",
     "walkthrough",
-    "product tour",
-    "product walkthrough",
-    "product guide",
-    "product tutorial",
-    "product demo",
-    "modal",
-    "lightbox"
+    "interactive tour",
+    "multi-element spotlight",
+    "tour persistence",
+    "onboarding checklist",
+    "hints",
+    "popover",
+    "tooltip",
+    "react-tour",
+    "vue-tour",
+    "svelte-tour",
+    "vanilla js tour"
   ]
 }

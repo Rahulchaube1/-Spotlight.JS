@@ -28,7 +28,7 @@ import { ExampleButton } from "./ExampleButton";
 </div>
 
 <script>
-  import { spotlight, driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import { checklist } from "spotlight.js/checklist";
   import "spotlight.js/dist/spotlight.css";
   import "spotlight.js/dist/checklist.css";
@@ -71,7 +71,7 @@ import { ExampleButton } from "./ExampleButton";
 
   const demoTourButton = document.querySelector("[data-demo-tour]");
   demoTourButton.addEventListener("click", () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: "driverjs-theme",
       showButtons: ["next", "previous"],
       steps: [
@@ -151,12 +151,12 @@ import { ExampleButton } from "./ExampleButton";
       ]
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const animatedTourBtn = document.getElementById('animated-tour');
   animatedTourBtn.addEventListener("click", () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: "driverjs-theme",
       showButtons: ["next", "previous"],
       steps: [
@@ -191,12 +191,12 @@ import { ExampleButton } from "./ExampleButton";
       onDestroyed: trackEnd(animatedTourBtn)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const staticTourBtn = document.getElementById('static-tour');
   staticTourBtn.addEventListener("click", () => {
-    const driverObj = driver({
+    const tour = spotlight({
       animate: false,
       popoverClass: "driverjs-theme",
       showButtons: ["next", "previous"],
@@ -232,12 +232,12 @@ import { ExampleButton } from "./ExampleButton";
       onDestroyed: trackEnd(staticTourBtn)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const asyncTourBtn = document.getElementById('async-tour');
   asyncTourBtn.addEventListener("click", () => {
-    const driverObj = driver({
+    const tour = spotlight({
       animate: true,
       popoverClass: "driverjs-theme",
       showButtons: ["next", "previous"],
@@ -250,7 +250,7 @@ import { ExampleButton } from "./ExampleButton";
             align: "start",
             onNextClick: () => {
               mountDummyElement();
-              driverObj.moveNext();
+              tour.moveNext();
             }
           }
         },
@@ -263,11 +263,11 @@ import { ExampleButton } from "./ExampleButton";
             align: "start",
             onPrevClick: () => {
               removeDummyElement();
-              driverObj.movePrevious();
+              tour.movePrevious();
             },
             onNextClick: () => {
               removeDummyElement();
-              driverObj.moveNext();
+              tour.moveNext();
             }
           }
         },
@@ -279,7 +279,7 @@ import { ExampleButton } from "./ExampleButton";
             align: "start",
             onPrevClick: () => {
               mountDummyElement();
-              driverObj.movePrevious();
+              tour.movePrevious();
             }
           }
         },
@@ -287,12 +287,12 @@ import { ExampleButton } from "./ExampleButton";
       onDestroyed: trackEnd(asyncTourBtn)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const exitConfirm = document.getElementById('confirm-on-exit');
   exitConfirm.addEventListener("click", () => {
-    const driverObj = driver({
+    const tour = spotlight({
       animate: true,
       popoverClass: "driverjs-theme",
       showButtons: ["next", "previous"],
@@ -327,18 +327,18 @@ import { ExampleButton } from "./ExampleButton";
       ],
       onDestroyStarted: (element, step, { reason }) => {
         if (reason === "done" || confirm("Are you sure?")) {
-          driverObj.destroy();
+          tour.destroy();
         }
       },
       onDestroyed: trackEnd(exitConfirm)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const showProgressBtn = document.getElementById('show-progress');
   showProgressBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       animate: true,
       showProgress: true,
       showButtons: ["next", "previous"],
@@ -374,29 +374,29 @@ import { ExampleButton } from "./ExampleButton";
       onDestroyed: trackEnd(showProgressBtn)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const simpleHighlightBtn = document.getElementById('simple-element-highlight');
   simpleHighlightBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: 'driverjs-theme',
       onDestroyed: trackEnd(simpleHighlightBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '[data-example-btns]'
     })
   });
 
   const simpleHighlightPopoverBtn = document.getElementById('simple-element-highlight-popover');
   simpleHighlightPopoverBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: 'driverjs-theme',
       onDestroyed: trackEnd(simpleHighlightPopoverBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '[data-example-btns]',
       popover: {
         title: "Popover Highlight",
@@ -408,12 +408,12 @@ import { ExampleButton } from "./ExampleButton";
 
   const noElementbtn = document.getElementById('no-element');
   noElementbtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: 'driverjs-theme',
       onDestroyed: trackEnd(noElementbtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       popover: {
         title: "Without Element",
         description: "You can also show a popover without highlighting an element. For example, this popover is shown without highlighting anything.",
@@ -423,7 +423,7 @@ import { ExampleButton } from "./ExampleButton";
 
   const preventCloseBtn = document.getElementById('prevent-close');
   preventCloseBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       animate: true,
       allowClose: false,
       showProgress: true,
@@ -460,18 +460,18 @@ import { ExampleButton } from "./ExampleButton";
       onDestroyed: trackEnd(preventCloseBtn)
     });
 
-    driverObj.drive();
+    tour.drive();
   });
 
   const overlayColorBtn = document.getElementById('overlay-color');
   overlayColorBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       overlayColor: 'red',
       overlayOpacity: 0.5,
       onDestroyed: trackEnd(overlayColorBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '[data-example-btns]',
       popover: {
         title: "Popover Highlight",
@@ -483,11 +483,11 @@ import { ExampleButton } from "./ExampleButton";
 
   const popoverPositionBtn = document.getElementById('popover-position');
   popoverPositionBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       onDestroyed: trackEnd(popoverPositionBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '#popover-position',
       popover: {
         title: "Popover Position",
@@ -500,12 +500,12 @@ import { ExampleButton } from "./ExampleButton";
 
   const customizingBtn = document.getElementById('customizing-popover');
   customizingBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: 'driverjs-theme',
       onDestroyed: trackEnd(customizingBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '#customizing-popover',
       popover: {
         title: "Customizing Popover",
@@ -518,12 +518,12 @@ import { ExampleButton } from "./ExampleButton";
 
   const hooksEverythingBtn = document.getElementById('hooks-everything');
   hooksEverythingBtn.addEventListener('click', () => {
-    const driverObj = driver({
+    const tour = spotlight({
       popoverClass: 'driverjs-theme',
       onDestroyed: trackEnd(hooksEverythingBtn)
     });
 
-    driverObj.highlight({
+    tour.highlight({
       element: '#hooks-everything',
       popover: {
         title: "Hooks for Everything",

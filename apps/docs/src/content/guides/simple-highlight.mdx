@@ -33,12 +33,12 @@ Example below shows how to highlight an element and simply show a popover.
 Here is the code for above example:
 
 ```js
-const driverObj = driver({
+const tour = spotlight({
   popoverClass: "driverjs-theme",
   stagePadding: 4,
 });
 
-driverObj.highlight({
+tour.highlight({
   element: "#highlight-me",
   popover: {
     side: "bottom",
@@ -65,9 +65,9 @@ You can also use it to show a simple modal without highlighting any element.
 Here is the code for above example:
 
 ```js
-const driverObj = driver();
+const tour = spotlight();
 
-driverObj.highlight({
+tour.highlight({
   popover: {
     description: "<img src='/animated-example.webp' style='height: 202.5px; width: 270px;' /><span style='font-size: 15px; display: block; margin-top: 10px; text-align: center;'>Yet another highlight example.</span>",
   }
@@ -89,7 +89,7 @@ Focus on the input below and see how the popover is shown.
 Here is the code for the above example.
 
 ```js
-const driverObj = driver({
+const tour = spotlight({
   popoverClass: "driverjs-theme",
   stagePadding: 0,
   onDestroyed: () => {
@@ -104,7 +104,7 @@ const addressEl = document.getElementById("address");
 const formEl = document.querySelector("form");
 
 nameEl.addEventListener("focus", () => {
-  driverObj.highlight({
+  tour.highlight({
     element: nameEl,
     popover: {
       title: "Name",
@@ -114,7 +114,7 @@ nameEl.addEventListener("focus", () => {
 });
 
 educationEl.addEventListener("focus", () => {
-  driverObj.highlight({
+  tour.highlight({
     element: educationEl,
     popover: {
       title: "Education",
@@ -124,7 +124,7 @@ educationEl.addEventListener("focus", () => {
 });
 
 ageEl.addEventListener("focus", () => {
-  driverObj.highlight({
+  tour.highlight({
     element: ageEl,
     popover: {
       title: "Age",
@@ -134,7 +134,7 @@ ageEl.addEventListener("focus", () => {
 });
 
 addressEl.addEventListener("focus", () => {
-  driverObj.highlight({
+  tour.highlight({
     element: addressEl,
     popover: {
       title: "Address",
@@ -144,6 +144,6 @@ addressEl.addEventListener("focus", () => {
 });
 
 formEl.addEventListener("blur", () => {
-  driverObj.destroy();
+  tour.destroy();
 });
 ```

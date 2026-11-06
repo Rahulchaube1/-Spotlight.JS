@@ -53,7 +53,7 @@ type Config = {
     | ((
         element?: Element,
         step: DriveStep,
-        options: { config: Config; state: State; driver: Driver; index: number | undefined }
+        options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
       ) => void);
   // Distance between the highlighted element and the cutout. (default: 10)
   stagePadding?: number;
@@ -123,7 +123,7 @@ type Config = {
   // title, descriptions, body, container etc.
   onPopoverRender?: (
     popover: PopoverDOM,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
 
   // Hooks to run before and after highlighting
@@ -138,17 +138,17 @@ type Config = {
   onHighlightStarted?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onHighlighted?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onDeselected?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined; reason?: DestroyReason }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined; reason?: DestroyReason }
   ) => void;
 
   // Hooks to run before and after the driver
@@ -173,12 +173,12 @@ type Config = {
   onDestroyStarted?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined; reason: DestroyReason }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined; reason: DestroyReason }
   ) => void;
   onDestroyed?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined; reason: DestroyReason }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined; reason: DestroyReason }
   ) => void;
 
   // Hooks to run on button clicks. Each hook receives
@@ -192,17 +192,17 @@ type Config = {
   onNextClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onPrevClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onCloseClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   // Runs when the done button (the next button on the
   // last step of a tour) is clicked. When provided, it
@@ -210,27 +210,27 @@ type Config = {
   onDoneClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
 };
 ```
 
-> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of the driver. This means that user won't be able to navigate using the buttons and you will have to either call `driverObj.moveNext()` or `driverObj.movePrevious()` to navigate to the next/previous step.
+> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of the driver. This means that user won't be able to navigate using the buttons and you will have to either call `tour.moveNext()` or `tour.movePrevious()` to navigate to the next/previous step.
 >
 > You can use this to implement custom logic for navigating between steps. This is also useful when you are dealing with dynamic content and want to highlight the next/previous element based on some logic.
 >
 > `onNextClick` and `onPrevClick` hooks can be configured at the step level as well. When configured at the driver level, you control the navigation for all the steps. When configured at the step level, you control the navigation for that particular step only.
 >
-> `onDoneClick` lets you detect when the user finishes the tour by clicking the done button on the last step. When provided, it runs instead of `onNextClick` on the last step, and Spotlight.js won't destroy the tour automatically; you control teardown by calling `driverObj.destroy()` yourself. Like the other click hooks, it can be configured at the driver or step level.
+> `onDoneClick` lets you detect when the user finishes the tour by clicking the done button on the last step. When provided, it runs instead of `onNextClick` on the last step, and Spotlight.js won't destroy the tour automatically; you control teardown by calling `tour.destroy()` yourself. Like the other click hooks, it can be configured at the driver or step level.
 
-> `options.index`: Every hook receives the zero-based index of the currently active step in `options.index` (equivalent to `driverObj.getActiveIndex()`), or `undefined` when driving a single highlight rather than a `steps` array. Note that `index` always reflects the _active_ step, so inside `onDeselected` (which fires for the step being left during a transition) it points at the step being moved to, not the one being deselected.
+> `options.index`: Every hook receives the zero-based index of the currently active step in `options.index` (equivalent to `tour.getActiveIndex()`), or `undefined` when driving a single highlight rather than a `steps` array. Note that `index` always reflects the _active_ step, so inside `onDeselected` (which fires for the step being left during a transition) it points at the step being moved to, not the one being deselected.
 
 > `options.reason`: `onDestroyStarted`, `onDestroyed` and the `onDeselected` that runs when the tour ends receive why it ended: `"done"` (moved past the last step, including when the remaining steps are skipped as missing), `"close"`, `"escape"`, `"overlay"`, `"replaced"` (another driver instance started) or `"api"` (`destroy()`, or a `moveTo()` / `movePrevious()` that left the steps, from your own code). It is not set on the other hooks, or on the `onDeselected` that runs between steps. A `destroy()` you call from a hook (`onDestroyStarted`, `onCloseClick`, `onNextClick` / `onDoneClick` on the last step, an `overlayClickBehavior` function) keeps the reason of the user action that started it. This hook only asks when the user leaves early:
 >
 > ```js
 > onDestroyStarted: (el, step, { reason }) => {
 >   if (reason === "done" || confirm("Leave?")) {
->     driverObj.destroy();
+>     tour.destroy();
 >   }
 > };
 > ```
@@ -300,7 +300,7 @@ type Popover = {
   // title, descriptions, body, etc.
   onPopoverRender?: (
     popover: PopoverDOM,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
 
   // Callbacks for button clicks. You can use
@@ -315,24 +315,24 @@ type Popover = {
   onNextClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onPrevClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onCloseClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   // Runs instead of `onNextClick` when the done button
   // (the next button on the last step) is clicked.
   onDoneClick?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
 };
 ```
@@ -382,21 +382,21 @@ type DriveStep = {
   //   - options.driver: Current driver object
   //   - options.index: Index of the currently active step
   //   - options.reason: Why the tour ended, only on the
-  //     onDeselected that runs on destroy (see Driver Configuration)
+  //     onDeselected that runs on destroy (see Spotlight Configuration)
   onDeselected?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined; reason?: DestroyReason }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined; reason?: DestroyReason }
   ) => void;
   onHighlightStarted?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
   onHighlighted?: (
     element?: Element,
     step: DriveStep,
-    options: { config: Config; state: State; driver: Driver; index: number | undefined }
+    options: { config: Config; state: State; driver: Spotlight; index: number | undefined }
   ) => void;
 };
 ```
@@ -626,7 +626,7 @@ type ChecklistItem = {
   // A tour to run: steps, a driver configuration or a
   // driver() instance. The item is ticked when the user
   // finishes the tour, not when they close it early.
-  tour?: DriveStep[] | Config | Driver;
+  tour?: DriveStep[] | Config | Spotlight;
 
   // A link to follow. The item is ticked on click.
   href?: string;

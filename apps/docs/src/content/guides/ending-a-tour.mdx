@@ -29,10 +29,10 @@ You can use the `onDestroyStarted` hook to add a confirmation dialog or some oth
   id={"confirm-destroy"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     showProgress: true,
     steps: [
       { element: '#confirm-destroy-example', popover: { title: 'Animated Tour Example', description: 'Here is the code example showing animated tour. Let\'s walk you through it.', side: "left", align: 'start' }},
@@ -43,16 +43,16 @@ You can use the `onDestroyStarted` hook to add a confirmation dialog or some oth
     // onDestroyStarted is called when the user tries to exit the tour
     onDestroyStarted: (element, step, { reason }) => {
       if (reason === "done" || confirm("Are you sure?")) {
-        driverObj.destroy();
+        tour.destroy();
       }
     },
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
-> **Note:** By overriding the `onDestroyStarted` hook, you are responsible for calling `driverObj.destroy()` to exit the tour.
+> **Note:** By overriding the `onDestroyStarted` hook, you are responsible for calling `tour.destroy()` to exit the tour.
 
 ## Prevent Exit
 
@@ -77,10 +77,10 @@ In the example below, you won't be able to exit the tour until you reach the las
   id={"prevent-exit"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     showProgress: true,
     allowClose: false,
     steps: [
@@ -91,7 +91,7 @@ In the example below, you won't be able to exit the tour until you reach the las
     ],
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
@@ -120,10 +120,10 @@ Use it to mark onboarding as complete only when the user actually finished it, o
   id={"destroy-reason"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     steps: [
       // ...
     ],
@@ -136,7 +136,7 @@ Use it to mark onboarding as complete only when the user actually finished it, o
     },
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 

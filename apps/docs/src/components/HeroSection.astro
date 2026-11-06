@@ -174,7 +174,7 @@ import Container from "./Container.astro";
 </style>
 
 <script>
-  import { spotlight, driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
   import { hints } from "spotlight.js/hints";
   import "spotlight.js/dist/hints.css";
@@ -275,8 +275,8 @@ import Container from "./Container.astro";
     };
 
     const runHighlight = () => {
-      const driverObj = driver({ popoverClass: "driverjs-theme" });
-      driverObj.highlight({
+      const tour = spotlight({ popoverClass: "driverjs-theme" });
+      tour.highlight({
         element: "[data-driver-tagline]",
         popover: {
           title: "Simple highlight",

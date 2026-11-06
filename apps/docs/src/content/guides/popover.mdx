@@ -16,11 +16,11 @@ You can control the popover position using the `side` and `align` options. The `
 > **Note:** Popover is intelligent enough to adjust itself to fit in the viewport. So, if you set `side` to `left` and `align` to `start`, but the popover doesn't fit in the viewport, it will automatically adjust itself to fit in the viewport. Consider highlighting and scrolling the browser to the element below to see this in action.
 
 ```js
-import { driver } from "spotlight.js";
+import { spotlight } from "spotlight.js";
 import "spotlight.js/dist/spotlight.css";
 
-const driverObj = driver();
-driverObj.highlight({
+const tour = spotlight();
+tour.highlight({
   element: "#left-start",
   popover: {
     title: "Animated Tour Example",
@@ -266,10 +266,10 @@ You can use the `showButtons` option to choose which buttons to show in the popo
     id={"buttons-all"}
     client:load>
     ```js
-    import { driver } from "spotlight.js";
+    import { spotlight } from "spotlight.js";
     import "spotlight.js/dist/spotlight.css";
 
-    const driverObj = driver({
+    const tour = spotlight({
       showButtons: [
         'next',
         'previous',
@@ -293,7 +293,7 @@ You can use the `showButtons` option to choose which buttons to show in the popo
       ]
     });
 
-    driverObj.drive();
+    tour.drive();
     ```
   </CodeSample>
   <CodeSample
@@ -384,10 +384,10 @@ You can also change the text of buttons using `nextBtnText`, `prevBtnText` and `
     id={"code-sample-3"}
     client:load>
     ```js
-    import { driver } from "spotlight.js";
+    import { spotlight } from "spotlight.js";
     import "spotlight.js/dist/spotlight.css";
 
-    const driverObj = driver({
+    const tour = spotlight({
       nextBtnText: '—›',
       prevBtnText: '‹—',
       doneBtnText: '✕',
@@ -398,7 +398,7 @@ You can also change the text of buttons using `nextBtnText`, `prevBtnText` and `
       ]
     });
 
-    driverObj.drive();
+    tour.drive();
     ```
   </CodeSample>
 </div>
@@ -409,7 +409,7 @@ You can use the `onNextClick`, `onPrevClick`, `onCloseClick` and `onDoneClick` c
 
 > Please note that when you configure these callbacks, the default functionality of the buttons will be disabled. You will have to implement the functionality yourself.
 
-> `onDoneClick` runs when the done button (the next button on the last step) is clicked. When provided, it runs instead of `onNextClick` on the last step, so you can detect when the user finishes the tour. Spotlight.js won't tear down the tour for you here — call `driverObj.destroy()` yourself.
+> `onDoneClick` runs when the done button (the next button on the last step) is clicked. When provided, it runs instead of `onNextClick` on the last step, so you can detect when the user finishes the tour. Spotlight.js won't tear down the tour for you here — call `tour.destroy()` yourself.
 
 <CodeSample
   buttonText={"Show Example"}
@@ -433,36 +433,36 @@ You can use the `onNextClick`, `onPrevClick`, `onCloseClick` and `onDoneClick` c
   id={"logger-events"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     onNextClick:() => {
       console.log('Next Button Clicked');
       // Implement your own functionality here
-      driverObj.moveNext();
+      tour.moveNext();
     },
     onPrevClick:() => {
       console.log('Previous Button Clicked');
       // Implement your own functionality here
-      driverObj.movePrevious();
+      tour.movePrevious();
     },
     onCloseClick:() => {
       console.log('Close Button Clicked');
       // Implement your own functionality here
-      driverObj.destroy();
+      tour.destroy();
     },
     onDoneClick:() => {
       console.log('Done Button Clicked');
       // Runs on the last step instead of onNextClick
-      driverObj.destroy();
+      tour.destroy();
     },
     steps: [
       // ...
     ]
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
@@ -512,10 +512,10 @@ You can add custom buttons using `onPopoverRender` callback. This callback is ca
   client:load
 >
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     // Get full control over the popover rendering.
     // Here we are adding a custom button that takes
     // user to the first step.
@@ -529,7 +529,7 @@ You can add custom buttons using `onPopoverRender` callback. This callback is ca
       popover.footerButtons.appendChild(firstButton);
 
       firstButton.addEventListener("click", () => {
-        driverObj.drive(0);
+        tour.drive(0);
       });
     },
     steps: [
@@ -537,6 +537,6 @@ You can add custom buttons using `onPopoverRender` callback. This callback is ca
     ]
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>

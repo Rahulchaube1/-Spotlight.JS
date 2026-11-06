@@ -12,12 +12,12 @@ You can customize the look and feel of the driver by adding custom class to popo
 You can set the `popoverClass` option globally in the driver configuration or at the step level to apply custom class to the popover and then use CSS to apply styles.
 
 ```js
-const driverObj = driver({
+const tour = spotlight({
   popoverClass: "my-custom-popover-class",
 });
 
 // or you can also have different classes for different steps
-const driverObj2 = driver({
+const driverObj2 = spotlight({
   steps: [
     {
       element: "#some-element",
@@ -35,59 +35,59 @@ Here is the list of classes applied to the popover which you can use in conjunct
 
 ```css
 /* Class assigned to popover wrapper */
-.driver-popover {
+.spotlight-popover {
 }
 
 /* Arrow pointing towards the highlighted element */
-.driver-popover-arrow {
+.spotlight-popover-arrow {
 }
 
 /* Rendered side and alignment of the popover. These reflect the actual
    position after Spotlight.js flips the popover to fit it in the viewport,
    so they may differ from the side/align you configured. */
-.driver-popover-side-top {
+.spotlight-popover-side-top {
 }
-.driver-popover-side-right {
+.spotlight-popover-side-right {
 }
-.driver-popover-side-bottom {
+.spotlight-popover-side-bottom {
 }
-.driver-popover-side-left {
+.spotlight-popover-side-left {
 }
-.driver-popover-align-start {
+.spotlight-popover-align-start {
 }
-.driver-popover-align-center {
+.spotlight-popover-align-center {
 }
-.driver-popover-align-end {
+.spotlight-popover-align-end {
 }
 
 /* Title and description */
-.driver-popover-title {
+.spotlight-popover-title {
 }
-.driver-popover-description {
+.spotlight-popover-description {
 }
 
 /* Close button displayed on the top right corner */
-.driver-popover-close-btn {
+.spotlight-popover-close-btn {
 }
 
 /* Footer of the popover displaying progress and navigation buttons */
-.driver-popover-footer {
+.spotlight-popover-footer {
 }
-.driver-popover-progress-text {
+.spotlight-popover-progress-text {
 }
-.driver-popover-prev-btn {
+.spotlight-popover-prev-btn {
 }
-.driver-popover-next-btn {
+.spotlight-popover-next-btn {
 }
 
 /* Shared style for the footer buttons. The built-in prev/next buttons carry it,
    and you can add it to custom buttons created in onPopoverRender to give them
    the default button look (or leave it off to apply your own styles). */
-.driver-popover-footer-btn {
+.spotlight-popover-footer-btn {
 }
 
 /* Added to the next button on the last step, when it acts as the "Done" button */
-.driver-popover-next-btn.driver-popover-done-btn {
+.spotlight-popover-next-btn.spotlight-popover-done-btn {
 }
 ```
 
@@ -136,7 +136,7 @@ Following classes are applied to the page when the driver is active.
 
 ```css
 /* Applied to the `body` when the driver: */
-.driver-active {
+.spotlight-active {
 } /* is active */
 .driver-fade {
 } /* is animated */
@@ -147,7 +147,7 @@ Following classes are applied to the page when the driver is active.
 Following classes are applied to the overlay i.e. the lightbox displayed over the page.
 
 ```css
-.driver-overlay {
+.spotlight-overlay {
 }
 ```
 
@@ -156,7 +156,7 @@ Following classes are applied to the overlay i.e. the lightbox displayed over th
 Whenever an element is highlighted, the following classes are applied to it.
 
 ```css
-.driver-active-element {
+.spotlight-active-element {
 }
 ```
 

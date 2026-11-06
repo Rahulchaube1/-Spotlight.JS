@@ -33,10 +33,10 @@ The tour below has `advanceOnClick` enabled, so you can click the highlighted li
   id={"interactive-tour"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     advanceOnClick: true,
     showProgress: true,
     steps: [
@@ -46,7 +46,7 @@ The tour below has `advanceOnClick` enabled, so you can click the highlighted li
     ],
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
@@ -69,10 +69,10 @@ Click-driven tours usually lead somewhere new: the click opens a modal or a drop
   id={"interactive-wait"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     steps: [
       {
         element: '#open-modal-btn',
@@ -96,7 +96,7 @@ Click-driven tours usually lead somewhere new: the click opens a modal or a drop
     ],
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
@@ -135,10 +135,10 @@ When a step needs to load data or render something before the tour can move on, 
   id={"async-tour"}
   client:load>
   ```js
-  import { driver } from "spotlight.js";
+  import { spotlight } from "spotlight.js";
   import "spotlight.js/dist/spotlight.css";
 
-  const driverObj = driver({
+  const tour = spotlight({
     showProgress: true,
     steps: [
       {
@@ -147,11 +147,11 @@ When a step needs to load data or render something before the tour can move on, 
           description: 'This is the first step. Next element will be loaded dynamically.'
           // By passing onNextClick, you can override the default behavior of the next button.
           // This will prevent the driver from moving to the next step automatically.
-          // You can then manually call driverObj.moveNext() to move to the next step.
+          // You can then manually call tour.moveNext() to move to the next step.
           onNextClick: () => {
             // .. load element dynamically
             // .. and then call
-            driverObj.moveNext();
+            tour.moveNext();
           },
         },
       },
@@ -172,11 +172,11 @@ When a step needs to load data or render something before the tour can move on, 
     ]
   });
 
-  driverObj.drive();
+  tour.drive();
   ```
 </CodeSample>
 
-> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of the driver. This means that user won't be able to navigate using the buttons and you will have to either call `driverObj.moveNext()` or `driverObj.movePrevious()` to navigate to the next/previous step.
+> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of the driver. This means that user won't be able to navigate using the buttons and you will have to either call `tour.moveNext()` or `tour.movePrevious()` to navigate to the next/previous step.
 >
 > You can use this to implement custom logic for navigating between steps. This is also useful when you are dealing with dynamic content and want to highlight the next/previous element based on some logic.
 >
@@ -191,7 +191,7 @@ A driver instance lives within a single page: a full page load destroys it, and 
 Define the tour in a function so every page can create it. On the step whose click navigates away, use `advanceOnClick` together with an `onNextClick` override: instead of moving to a step that lives on another page, save where to resume and tear the tour down. The link's own click keeps working, so navigation happens naturally.
 
 ```js
-import { driver } from "spotlight.js";
+import { spotlight } from "spotlight.js";
 import "spotlight.js/dist/spotlight.css";
 
 const TOUR_KEY = "app-tour-step";
@@ -199,7 +199,7 @@ const TOUR_KEY = "app-tour-step";
 export function createTour() {
   let isNavigating = false;
 
-  const driverObj = driver({
+  const tour = spotlight({
     steps: [
       {
         element: "#reports-nav",
@@ -218,7 +218,7 @@ export function createTour() {
             // and let the click's navigation happen naturally.
             isNavigating = true;
             localStorage.setItem(TOUR_KEY, "2");
-            driverObj.destroy();
+            tour.destroy();
           },
         },
       },
@@ -263,5 +263,5 @@ if (savedStep !== null) {
 ### Notes
 
 - The pattern works the same for full page loads and client-side routing. On a full load the browser tears everything down anyway; the explicit `destroy()` in the hand-off matters for single-page apps, where the old page's tour would otherwise stay on screen.
-- The saved value here is a hardcoded index for clarity. In a larger tour, compute it with `driverObj.getActiveIndex() + 1`, or store a step id and look up its index when resuming, so reordering steps doesn't break saved progress.
+- The saved value here is a hardcoded index for clarity. In a larger tour, compute it with `tour.getActiveIndex() + 1`, or store a step id and look up its index when resuming, so reordering steps doesn't break saved progress.
 - If the destination page renders its content asynchronously, `waitForElement` on the first resumed step keeps the tour from falling back to the centered popover while the page hydrates. See [Wait for Elements](#wait-for-elements) above.

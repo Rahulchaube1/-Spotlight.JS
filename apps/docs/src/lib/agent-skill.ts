@@ -1,10 +1,10 @@
 import { createHash } from "node:crypto";
 import { getAgentGuides, SITE_URL } from "./agent-markdown";
 
-export const SKILL_NAME = "driver-js";
+export const SKILL_NAME = "spotlight-js";
 export const SKILL_PATH = `/.well-known/agent-skills/${SKILL_NAME}/SKILL.md`;
 export const SKILL_DESCRIPTION =
-  "Add product tours, element highlights, feature hints and onboarding checklists to a web app with Driver.js.";
+  "Add product tours, element spotlights, feature hints and onboarding checklists to a web app with Spotlight.js.";
 
 export async function getSkillMarkdown() {
   const guides = await getAgentGuides();
@@ -20,29 +20,29 @@ name: ${SKILL_NAME}
 description: ${SKILL_DESCRIPTION} Use when the user wants an onboarding tour, a guided walkthrough, a spotlight on an element, pulsing hint beacons or a getting-started checklist.
 ---
 
-# Driver.js
+# Spotlight.js
 
-Driver.js is a lightweight, dependency-free JavaScript library. It works with any framework.
+Spotlight.js is a lightweight, zero-dependency JavaScript library. It works with any framework.
 
 ## Install
 
 \`\`\`bash
-npm install driver.js
+npm install spotlight.js
 \`\`\`
 
 Each feature is its own entry with its own stylesheet:
 
-- Tours and highlights: \`import { driver } from "driver.js"\` and \`import "driver.js/dist/driver.css"\`
-- Hints: \`import { hints } from "driver.js/hints"\` and \`import "driver.js/dist/hints.css"\`
-- Checklists: \`import { checklist } from "driver.js/checklist"\` with \`import "driver.js/dist/driver.css"\` and \`import "driver.js/dist/checklist.css"\`
+- Tours and highlights: \`import { spotlight } from "spotlight.js"\` and \`import "spotlight.js/dist/spotlight.css"\`
+- Hints: \`import { hints } from "spotlight.js/hints"\` and \`import "spotlight.js/dist/hints.css"\`
+- Checklists: \`import { checklist } from "spotlight.js/checklist"\` with \`import "spotlight.js/dist/spotlight.css"\` and \`import "spotlight.js/dist/checklist.css"\`
 
 ## Tour
 
 \`\`\`js
-import { driver } from "driver.js";
-import "driver.js/dist/driver.css";
+import { spotlight } from "spotlight.js";
+import "spotlight.js/dist/spotlight.css";
 
-const driverObj = driver({
+const tour = spotlight({
   showProgress: true,
   steps: [
     { element: "#new-project", popover: { title: "New project", description: "Start here." } },
@@ -50,14 +50,14 @@ const driverObj = driver({
   ],
 });
 
-driverObj.drive();
+tour.drive();
 \`\`\`
 
 ## Highlight one element
 
 \`\`\`js
-const driverObj = driver();
-driverObj.highlight({ element: "#search", popover: { title: "Search", description: "Find anything." } });
+const tour = spotlight();
+tour.highlight({ element: "#search", popover: { title: "Search", description: "Find anything." } });
 \`\`\`
 
 ## Workflow

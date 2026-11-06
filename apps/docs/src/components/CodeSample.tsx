@@ -1,5 +1,5 @@
 import type { Config, DriveStep, PopoverDOM } from "spotlight.js";
-import { spotlight, driver } from "spotlight.js";
+import { spotlight } from "spotlight.js";
 import { useRef } from "react";
 import "spotlight.js/dist/spotlight.css";
 import { mountDummyElement, removeDummyElement } from "../lib/dummyElement";
@@ -24,7 +24,7 @@ function attachFirstButton(popover: PopoverDOM) {
   popover.footerButtons.appendChild(firstButton);
 
   firstButton.addEventListener("click", () => {
-    window.driverObj.drive(0);
+    window.tour.drive(0);
   });
 }
 
@@ -50,17 +50,17 @@ export function CodeSample(props: CodeSampleProps) {
 
   function onClick() {
     if (highlight) {
-      const driverObj = driver({
+      const tour = spotlight({
         ...config,
       });
 
       window.driverObj = driverObj;
-      driverObj.highlight(highlight);
+      tour.highlight(highlight);
     } else if (tour) {
       if (id === "confirm-destroy") {
         config!.onDestroyStarted = (element, step, { reason }) => {
           if (reason === "done" || confirm("Are you sure?")) {
-            driverObj.destroy();
+            tour.destroy();
           }
         };
       }
@@ -87,17 +87,17 @@ export function CodeSample(props: CodeSampleProps) {
         config!.onNextClick = () => {
           console.log("Next Button Clicked");
           // Implement your own functionality here
-          driverObj.moveNext();
+          tour.moveNext();
         };
         config!.onPrevClick = () => {
           console.log("Previous Button Clicked");
           // Implement your own functionality here
-          driverObj.movePrevious();
+          tour.movePrevious();
         };
         config!.onCloseClick = () => {
           console.log("Close Button Clicked");
           // Implement your own functionality here
-          driverObj.destroy();
+          tour.destroy();
         };
       }
 
@@ -107,7 +107,7 @@ export function CodeSample(props: CodeSampleProps) {
         // waiting for it via waitForElement.
         tour[0].popover!.onNextClick = () => {
           window.setTimeout(mountDummyElement, 800);
-          driverObj.moveNext();
+          tour.moveNext();
         };
         tour[1].onDeselected = () => removeDummyElement();
         config!.onDestroyed = () => removeDummyElement();
@@ -116,7 +116,7 @@ export function CodeSample(props: CodeSampleProps) {
       if (tour?.[2]?.popover?.title === "Next Step is Async") {
         tour[2].popover.onNextClick = () => {
           mountDummyElement();
-          driverObj.moveNext();
+          tour.moveNext();
         };
 
         if (tour?.[3]?.element === ".dynamic-el") {
@@ -127,24 +127,24 @@ export function CodeSample(props: CodeSampleProps) {
           // @ts-ignore
           tour[4].popover.onPrevClick = () => {
             mountDummyElement();
-            driverObj.movePrevious();
+            tour.movePrevious();
           };
 
           // @ts-ignore
           tour[3].popover.onPrevClick = () => {
             removeDummyElement();
-            driverObj.movePrevious();
+            tour.movePrevious();
           };
         }
       }
 
-      const driverObj = driver({
+      const tour = spotlight({
         ...config,
         steps: tour.map(scopeToSample),
       });
 
       window.driverObj = driverObj;
-      driverObj.drive();
+      tour.drive();
     }
   }
 

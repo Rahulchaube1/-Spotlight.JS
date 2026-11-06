@@ -10,19 +10,19 @@ Drivers 1.x is a major release that introduces a new API and a new architecture.
 
 > Change in how you import the library
 ```diff
-- import Driver from 'spotlight.js';
+- import Spotlight from 'spotlight.js';
 - import 'Spotlight.js/dist/driver.min.css';
-+ import { driver } from 'spotlight.js';
++ import { spotlight } from 'spotlight.js';
 + import "spotlight.js/dist/spotlight.css";
 ```
 
 > Change in how you initialize the library
 ```diff
-- const driverObj = new Driver(config);
-- driverObj.setSteps(steps);
+- const driverObj = new Spotlight(config);
+- tour.setSteps(steps);
 
 + // Steps can be passed in the constructor
-+ const driverObj = driver({
++ const tour = spotlight({
 +   ...config,
 +   steps
 + });
@@ -119,43 +119,43 @@ const stepDefinition = {
 > Changes in API methods.
 
 ```diff
-- driverObj.preventMove();  // async support is built-in, no longer need to call this
+- tour.preventMove();  // async support is built-in, no longer need to call this
 - activeElement.getCalculatedPosition();
 - activeElement.hidePopover();
 - activeElement.showPopover();
 - activeElement.getNode();
 
-- const isActivated = driverObj.isActivated;
-+ const isActivated = driverObj.isActive();
+- const isActivated = tour.isActivated;
++ const isActivated = tour.isActive();
 
-- driverObj.start(stepNumber = 0);
-+ driverObj.drive(stepNumber = 0);
+- tour.start(stepNumber = 0);
++ tour.drive(stepNumber = 0);
 
-- driverObj.highlight(string|stepDefinition);
-+ driverObj.highlight(stepDefinition)
+- tour.highlight(string|stepDefinition);
++ tour.highlight(stepDefinition)
 
-- driverObj.reset();
-+ driverObj.destroy();
+- tour.reset();
++ tour.destroy();
 
-- driverObj.hasHighlightedElement();
-+ typeof driverObj.getActiveElement() !== 'undefined';
+- tour.hasHighlightedElement();
++ typeof tour.getActiveElement() !== 'undefined';
 
-- driverObj.getHighlightedElement();
-+ driverObj.getActiveElement();
+- tour.getHighlightedElement();
++ tour.getActiveElement();
 
-- driverObj.getLastHighlightedElement();
-+ driverObj.getPreviousElement();
+- tour.getLastHighlightedElement();
++ tour.getPreviousElement();
 
 + // New options added
-+ driverObj.moveTo(stepIndex)
-+ driverObj.getActiveStep(); // returns the configured step definition
-+ driverObj.getPreviousStep(); // returns the previous step definition
-+ driverObj.isLastStep();
-+ driverObj.isFirstStep();
-+ driverObj.getState();
-+ driverObj.getConfig();
-+ driverObj.setConfig(config);
-+ driverObj.refresh();
++ tour.moveTo(stepIndex)
++ tour.getActiveStep(); // returns the configured step definition
++ tour.getPreviousStep(); // returns the previous step definition
++ tour.isLastStep();
++ tour.isFirstStep();
++ tour.getState();
++ tour.getConfig();
++ tour.setConfig(config);
++ tour.refresh();
 ```
 
 Please make sure to visit the [documentation](https://Spotlightjs.rahulchaube1.com/docs/configuration) for more details.

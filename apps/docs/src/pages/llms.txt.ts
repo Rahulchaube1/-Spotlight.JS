@@ -1,15 +1,15 @@
 import type { APIRoute } from "astro";
 import { getAgentGuides, SITE_URL } from "../lib/agent-markdown";
 
-const SUMMARY = `# Driver.js
+const SUMMARY = `# Spotlight.js
 
 > Lightweight, dependency-free JavaScript library for product tours, element highlights, feature hints and onboarding checklists. Works with any framework.
 
-Install with \`npm install driver.js\`. Each feature is its own entry with its own stylesheet:
+Install with \`npm install spotlight.js\`. Each feature is its own entry with its own stylesheet:
 
-- Tours and highlights: \`import { driver } from "driver.js"\` and \`import "driver.js/dist/driver.css"\`
-- Hints: \`import { hints } from "driver.js/hints"\` and \`import "driver.js/dist/hints.css"\`
-- Checklists: \`import { checklist } from "driver.js/checklist"\` with \`import "driver.js/dist/driver.css"\` and \`import "driver.js/dist/checklist.css"\`
+- Tours and highlights: \`import { spotlight } from "spotlight.js"\` and \`import "spotlight.js/dist/spotlight.css"\`
+- Hints: \`import { hints } from "spotlight.js/hints"\` and \`import "spotlight.js/dist/hints.css"\`
+- Checklists: \`import { checklist } from "spotlight.js/checklist"\` with \`import "spotlight.js/dist/spotlight.css"\` and \`import "spotlight.js/dist/checklist.css"\`
 
 Every page below is Markdown. Drop the \`.md\` suffix for the HTML version.`;
 
