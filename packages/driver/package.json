@@ -31,6 +31,16 @@
         "default": "./dist/spotlight.js.cjs"
       }
     },
+    "./lite": {
+      "import": {
+        "types": "./dist/lite.d.mts",
+        "default": "./dist/lite.mjs"
+      },
+      "require": {
+        "types": "./dist/lite.d.cts",
+        "default": "./dist/lite.cjs"
+      }
+    },
     "./hints": {
       "import": {
         "types": "./dist/hints.d.mts",

@@ -32,6 +32,12 @@ export default defineConfig([
   },
   {
     ...shared,
+    entry: { lite: "src/lite.ts" },
+    format: ["es", "cjs", "iife"],
+    globalName: "spotlightLite",
+  },
+  {
+    ...shared,
     entry: { hints: "src/hints.ts" },
     format: ["es", "cjs", "iife"],
     globalName: "spotlightHints",

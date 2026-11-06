@@ -12,11 +12,6 @@ import {
   shouldSkipStep,
 } from "./step";
 import { resolveElement } from "./utils";
-import { defaultSynthesizer } from "./audio";
-import { launchConfetti } from "./confetti";
-import { SpotlightAnalyticsTracker } from "./analytics";
-import { defaultCheatsheet } from "./cheatsheet";
-import { defaultTourBuilder } from "./builder";
 import "./spotlight.css";
 import "./driver.css";
 
@@ -90,7 +85,7 @@ export type Spotlight = Driver;
 export function spotlight(options: Config = {}): Spotlight {
   const ctx = createContext(options);
   const teardown = () => destroy("replaced", false);
-  const analytics = new SpotlightAnalyticsTracker(options.onAnalytics);
+  
 
   function getStorage(): Storage | undefined {
     try {
@@ -456,17 +451,12 @@ export function spotlight(options: Config = {}): Spotlight {
       ctx.setState("__advanceCleanup", undefined);
     }
 
-    if (stepIndex === 0) {
-      analytics.trackTourStart(steps.length);
+    if (currentStep.sound || ctx.getConfig("sound")) {
+      import("./audio").then(m => m.defaultSynthesizer.play("chime")).catch(() => {});
     }
-    analytics.trackStepView(
-      stepIndex,
-      typeof currentStep.element === "string" ? currentStep.element : undefined,
-      currentStep.popover?.title
-    );
 
     if (currentStep.confetti) {
-      launchConfetti();
+      import("./confetti").then(m => m.launchConfetti()).catch(() => {});
     }
 
     const hasNextStep = steps[stepIndex + 1];
@@ -558,11 +548,9 @@ export function spotlight(options: Config = {}): Spotlight {
       const steps = ctx.getConfig("steps") || [];
       saveStoredState(steps.length ? steps.length - 1 : 0, true);
       if (ctx.getConfig("celebrateOnDone")) {
-        launchConfetti();
+        import("./confetti").then(m => m.launchConfetti()).catch(() => {});
+        import("./audio").then(m => m.defaultSynthesizer.play("success")).catch(() => {});
       }
-      analytics.trackTourComplete();
-    } else {
-      analytics.trackTourExit(reason);
     }
 
     document.body.classList.remove(
@@ -723,12 +711,12 @@ export function spotlight(options: Config = {}): Spotlight {
       init();
       drive(index);
     },
-    startTourBuilder: () => defaultTourBuilder.start(),
-    stopTourBuilder: () => defaultTourBuilder.stop(),
-    triggerConfetti: (opts?: any) => launchConfetti(opts),
-    playSound: (type?: any) => defaultSynthesizer.play(type || "chime"),
-    showCheatsheet: () => defaultCheatsheet.show(),
-    hideCheatsheet: () => defaultCheatsheet.hide(),
+    startTourBuilder: async () => { const { defaultTourBuilder } = await import("./builder"); defaultTourBuilder.start(); },
+    stopTourBuilder: async () => { const { defaultTourBuilder } = await import("./builder"); defaultTourBuilder.stop(); },
+    triggerConfetti: async (opts?: any) => { const { launchConfetti } = await import("./confetti"); launchConfetti(opts); },
+    playSound: async (type?: any) => { const { defaultSynthesizer } = await import("./audio"); defaultSynthesizer.play(type || "chime"); },
+    showCheatsheet: async () => { const { defaultCheatsheet } = await import("./cheatsheet"); defaultCheatsheet.show(); },
+    hideCheatsheet: async () => { const { defaultCheatsheet } = await import("./cheatsheet"); defaultCheatsheet.hide(); },
   };
 
   ctx.setDriver(api);

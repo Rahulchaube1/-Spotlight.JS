@@ -12,3 +12,6 @@ if (existsSync("dist/hints.d.mts")) {
 if (existsSync("dist/checklist.d.mts")) {
   copyFileSync("dist/checklist.d.mts", "dist/checklist.d.ts");
 }
+if (existsSync("dist/lite.d.mts")) {
+  copyFileSync("dist/lite.d.mts", "dist/lite.d.ts");
+}

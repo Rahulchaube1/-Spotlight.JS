@@ -12,7 +12,8 @@
   <a href="https://github.com/Rahulchaube1/-Spotlight.JS/stargazers"><img src="https://img.shields.io/github/stars/Rahulchaube1/-Spotlight.JS?style=social" alt="GitHub stars" /></a>
   <a href="https://github.com/Rahulchaube1/-Spotlight.JS/network/members"><img src="https://img.shields.io/github/forks/Rahulchaube1/-Spotlight.JS?style=social" alt="GitHub forks" /></a>
   <a href="https://spotlightjs.rahulchaube1.com"><img src="https://img.shields.io/badge/Documentation-spotlightjs.rahulchaube1.com-0284c7?style=flat-square" alt="Documentation" /></a>
-  <a href="https://bundlephobia.com"><img src="https://img.shields.io/badge/Bundle%20Size-4.9%20kB%20gzipped-emerald?style=flat-square" alt="Bundle Size: 4.9kB" /></a>
+  <a href="https://bundlephobia.com"><img src="https://img.shields.io/badge/Lite%20Edition-1.97%20kB%20gzipped-emerald?style=flat-square" alt="Lite Bundle: 1.97kB" /></a>
+  <a href="https://bundlephobia.com"><img src="https://img.shields.io/badge/Full%20Engine-8.94%20kB%20gzipped-blue?style=flat-square" alt="Bundle Size: 4.9kB" /></a>
   <a href="https://github.com/Rahulchaube1/-Spotlight.JS/blob/main/license"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License: MIT" /></a>
   <a href="https://buymeacoffee.com/rahulchaube"><img src="https://img.shields.io/badge/Sponsor-Buy%20Me%20a%20Coffee-f59e0b?style=flat-square" alt="Sponsor" /></a>
 </p>
@@ -20,6 +21,17 @@
 ---
 
 ## Why Spotlight.js?
+### Lightweight Benchmark Comparison
+
+| Library | Bundle Size (Gzipped) | Runtime Dependencies | Auto-Resume Persistence | Interactive Action Gates |
+| :--- | :--- | :--- | :--- | :--- |
+| **Spotlight.js Lite** | **1.97 kB** ⚡ *(World record)* | **0** | **Yes** (Built-in) | Yes |
+| **Spotlight.js Full** | **8.94 kB** | **0** | **Yes** (Built-in) | Yes |
+| Driver.js | 13.5 kB | 0 | No | No |
+| Intro.js | 12.8 kB | 0 | No | No |
+| Shepherd.js | ~35.0 kB | Multiple (Floating UI) | No | No |
+| React Joyride | ~42.0 kB | React + Popper | No | No |
+
 
 Most onboarding and walkthrough libraries today suffer from serious limitations:
 - **Heavy runtime bloat**: Dragging in 30kB to 90kB of polyfills, animation dependencies, or external CSS bundles.
@@ -28,14 +40,14 @@ Most onboarding and walkthrough libraries today suffer from serious limitations:
 - **Positioning breaks inside overflow containers**: Popovers misaligning when targets reside inside scrollable panels or fixed dialogs.
 - **Rigid design systems**: Popovers that fight modern CSS setups like Tailwind CSS and CSS variables.
 
-**Spotlight.js delivers an ultra-fast, zero-dependency engine in under 5kB.** It provides silky-smooth SVG cutouts, native multi-element spotlighting, automatic local storage tour persistence, zero-dependency Web Audio synthesizers, interactive action gating, and onboarding checklists that integrate seamlessly with your product.
+**Spotlight.js delivers an ultra-fast, zero-dependency engine starting at 1.97 kB gzipped (`spotlight.js/lite` @ 1.97 kB gzipped; full engine @ 8.94 kB gzipped).** It provides silky-smooth SVG cutouts, native multi-element spotlighting, automatic local storage tour persistence, zero-dependency Web Audio synthesizers, interactive action gating, and onboarding checklists that integrate seamlessly with your product.
 
 ---
 
 ## Core Highlights
 
 - **Zero Dependencies**: Pure vanilla TypeScript compiled with zero external runtime packages.
-- **Ultra Lightweight**: Just **4.9 kB minified + gzipped** (13.3 kB uncompressed).
+- **Ultra Lightweight**: Just **1.97 kB gzipped** for the Lite Edition (`spotlight.js/lite`) and **8.94 kB gzipped** for the full engine with dynamic code-splitting.
 - **Tour State Persistence**: Automatically stores progress in `localStorage` or `sessionStorage` with auto-resume across reloads and route changes.
 - **Interactive Action Gating (`advanceOn`)**: Require users to perform real tasks (clicking buttons, typing into inputs) before the tour progresses.
 - **Multi-Element Spotlighting**: Spotlight multiple elements simultaneously under a single, unified cutout mask.
@@ -350,7 +362,7 @@ onMounted(() => {
 ## Frequently Asked Questions (FAQ)
 
 ### What is the exact bundle size of Spotlight.js?
-Spotlight.js is **4.9 kB minified and gzipped** (13.3 kB uncompressed minified). It is compiled with zero runtime dependencies, ensuring maximum speed without degrading Core Web Vitals.
+Spotlight.js Lite is just **1.97 kB gzipped** (5.01 kB uncompressed), making it the lightest spotlight & tour library in the world! The full engine is **8.94 kB gzipped** (32.1 kB uncompressed) with zero runtime dependencies and asynchronous lazy-loading for audio, confetti, and the tour builder. It is compiled with zero runtime dependencies, ensuring maximum speed without degrading Core Web Vitals.
 
 ### How does Spotlight.js handle elements inside nested scrollable containers?
 Most walkthrough libraries break when an element is inside an `overflow: auto` or `overflow: scroll` container (such as a sidebar, modal, or table). Spotlight.js includes an intelligent ancestor scanner (`bringInView`) that recursively inspects parent elements, computes relative bounding coordinates, and scrolls both the parent container and the browser window smoothly into view.
@@ -408,3 +420,4 @@ Crafted and maintained with care by **Rahul Chaube**:
 ## License
 
 MIT Licensed &copy; 2026 [Rahul Chaube](https://rahulchaube1.com). Free and open-source for personal and commercial projects.
+
