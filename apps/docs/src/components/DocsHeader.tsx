@@ -32,7 +32,7 @@ export function DocsHeader(props: DocsHeaderProps) {
           <span className="text-muted-foreground">&middot;</span>
           <a href="https://www.linkedin.com/in/rahulchaube1/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">LinkedIn</a>
           <span className="text-muted-foreground">&middot;</span>
-          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80 transition-colors">☕ Sponsor</a>
+          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80 transition-colors">Sponsor</a>
         </div>
         {Object.entries(groupedGuides).map(([category, guides]) => (
           <div key={category} className="flex flex-col gap-2">

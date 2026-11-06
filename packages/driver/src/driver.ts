@@ -38,6 +38,7 @@ export type DriveStep = {
   advanceOnClick?: boolean;
   skipMissingElement?: boolean;
   waitForElement?: number;
+  advanceOn?: string | { event: string; selector?: string };
   confetti?: boolean;
   sound?: boolean;
   data?: Record<string, any>;
@@ -71,6 +72,9 @@ export interface Driver {
   highlight: (step: DriveStep) => void;
   destroy: () => void;
   // Modern Spotlight Powerhouse Methods
+  isCompleted: () => boolean;
+  reset: () => void;
+  resume: () => void;
   startTourBuilder: () => void;
   stopTourBuilder: () => void;
   triggerConfetti: (opts?: any) => void;
@@ -85,6 +89,54 @@ export function driver(options: Config = {}): Driver {
   const ctx = createContext(options);
   const teardown = () => destroy("replaced", false);
   const analytics = new SpotlightAnalyticsTracker(options.onAnalytics);
+
+  function getStorage(): Storage | undefined {
+    try {
+      const persist = ctx.getConfig("persist") || "localStorage";
+      if (typeof window !== "undefined" && (window as any)[persist]) {
+        return (window as any)[persist];
+      }
+    } catch {
+      return undefined;
+    }
+    return undefined;
+  }
+
+  function getStoredState(): { activeIndex: number; completed: boolean; timestamp: number } | undefined {
+    const key = ctx.getConfig("storageKey");
+    if (!key) return undefined;
+    const store = getStorage();
+    if (!store) return undefined;
+    try {
+      const raw = store.getItem(`spotlight_${key}`);
+      return raw ? JSON.parse(raw) : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
+  function saveStoredState(stepIndex: number, completed: boolean) {
+    const key = ctx.getConfig("storageKey");
+    if (!key) return;
+    const store = getStorage();
+    if (!store) return;
+    try {
+      store.setItem(
+        `spotlight_${key}`,
+        JSON.stringify({ activeIndex: stepIndex, completed, timestamp: Date.now() })
+      );
+    } catch {}
+  }
+
+  function clearStoredState() {
+    const key = ctx.getConfig("storageKey");
+    if (!key) return;
+    const store = getStorage();
+    if (!store) return;
+    try {
+      store.removeItem(`spotlight_${key}`);
+    } catch {}
+  }
 
   function handleClose(reason: DestroyReason = "close") {
     if (!ctx.getConfig("allowClose")) {
@@ -394,6 +446,13 @@ export function driver(options: Config = {}): Driver {
 
     ctx.setState("__activeOnDestroyed", document.activeElement as HTMLElement);
     ctx.setState("activeIndex", stepIndex);
+    saveStoredState(stepIndex, false);
+
+    const cleanupAdvance = ctx.getState("__advanceCleanup") as (() => void) | undefined;
+    if (cleanupAdvance) {
+      cleanupAdvance();
+      ctx.setState("__advanceCleanup", undefined);
+    }
 
     if (stepIndex === 0) {
       analytics.trackTourStart(steps.length);
@@ -409,6 +468,26 @@ export function driver(options: Config = {}): Driver {
     }
 
     const hasNextStep = steps[stepIndex + 1];
+
+    if (currentStep.advanceOn) {
+      const adv = typeof currentStep.advanceOn === "string" ? { event: currentStep.advanceOn } : currentStep.advanceOn;
+      const el = resolveElement(currentStep.element);
+      if (el) {
+        const target = adv.selector ? el.querySelector(adv.selector) || el : el;
+        const handler = () => {
+          target.removeEventListener(adv.event, handler);
+          if (!hasNextStep) {
+            destroy("done");
+          } else {
+            drive(stepIndex + 1);
+          }
+        };
+        target.addEventListener(adv.event, handler, { once: true });
+        ctx.setState("__advanceCleanup", () => {
+          target.removeEventListener(adv.event, handler);
+        });
+      }
+    }
 
     highlight(
       ctx,
@@ -467,7 +546,15 @@ export function driver(options: Config = {}): Driver {
     const onDeselected = activeStep?.onDeselected || ctx.getConfig("onDeselected");
     const onDestroyed = ctx.getConfig("onDestroyed");
 
+    const cleanupAdvance = ctx.getState("__advanceCleanup") as (() => void) | undefined;
+    if (cleanupAdvance) {
+      cleanupAdvance();
+      ctx.setState("__advanceCleanup", undefined);
+    }
+
     if (reason === "done") {
+      const steps = ctx.getConfig("steps") || [];
+      saveStoredState(steps.length ? steps.length - 1 : 0, true);
       if (ctx.getConfig("celebrateOnDone")) {
         launchConfetti();
       }
@@ -531,9 +618,20 @@ export function driver(options: Config = {}): Driver {
   const api: Driver = {
     isActive: () => ctx.getState("isInitialized") || false,
     refresh: () => requireRefresh(ctx),
-    drive: (stepIndex: number = 0) => {
+    drive: (stepIndex?: number) => {
       init();
-      drive(stepIndex);
+      if (typeof stepIndex === "undefined") {
+        if (ctx.getConfig("autoResume")) {
+          const state = getStoredState();
+          if (state && !state.completed) {
+            drive(state.activeIndex);
+            return;
+          }
+        }
+        drive(0);
+      } else {
+        drive(stepIndex);
+      }
     },
     setConfig: ctx.setConfig,
     setSteps: (steps: DriveStep[]) => {
@@ -604,6 +702,19 @@ export function driver(options: Config = {}): Driver {
       destroy("api", false);
     },
     // Modern Spotlight Powerhouse Methods
+    isCompleted: () => {
+      const state = getStoredState();
+      return !!state?.completed;
+    },
+    reset: () => {
+      clearStoredState();
+    },
+    resume: () => {
+      const state = getStoredState();
+      const index = state && !state.completed ? state.activeIndex : 0;
+      init();
+      drive(index);
+    },
     startTourBuilder: () => defaultTourBuilder.start(),
     stopTourBuilder: () => defaultTourBuilder.stop(),
     triggerConfetti: (opts?: any) => launchConfetti(opts),

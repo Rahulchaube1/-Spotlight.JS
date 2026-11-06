@@ -65,6 +65,12 @@ export type Config = {
   showButtons?: AllowedButtons[];
   disableButtons?: AllowedButtons[];
   showProgress?: boolean;
+  showProgressBar?: boolean;
+
+  // Persistence options for cross-page & return-user onboarding
+  storageKey?: string;
+  persist?: "localStorage" | "sessionStorage";
+  autoResume?: boolean;
 
   // Button texts
   progressText?: string;
@@ -160,6 +166,7 @@ export type State = {
   __resizeTimeout?: number;
   __transitionCallback?: () => void;
   __pendingWaitCancel?: () => void;
+  __advanceCleanup?: () => void;
 
   // User action a destroy() called from a hook reports instead of "api".
   __destroyReason?: DestroyReason;
