@@ -24,10 +24,11 @@ const checklistCss = fileURLToPath(new URL("../../packages/driver/src/checklist.
 export default defineConfig({
   site: "https://Spotlightjs.rahulchaube1.com",
   build: {
-    format: "file",
+    format: "directory",
   },
   // Example pages that were merged into grouped pages.
   redirects: {
+    "/docs": "/docs/installation",
     "/docs/animated-tour": "/docs/tour-basics#animated-tour",
     "/docs/static-tour": "/docs/tour-basics#static-tour",
     "/docs/tour-progress": "/docs/tour-basics#tour-progress",
