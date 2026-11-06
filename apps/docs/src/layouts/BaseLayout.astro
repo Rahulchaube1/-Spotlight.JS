@@ -59,46 +59,60 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
 
     <style is:global>
       .driver-popover.driverjs-theme {
-        background-color: #fde047;
-        color: #000;
+        background-color: var(--card, #ffffff);
+        color: var(--foreground, #1e293b);
+        border: 1px solid var(--border, #e2e8f0);
+        border-radius: var(--radius, 0.75rem);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        padding: 18px;
       }
 
       .driver-popover.driverjs-theme .driver-popover-title {
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--foreground, #1e293b);
+        letter-spacing: -0.01em;
       }
 
-      .driver-popover.driverjs-theme .driver-popover-title,
-      .driver-popover.driverjs-theme .driver-popover-description,
+      .driver-popover.driverjs-theme .driver-popover-description {
+        color: var(--muted-foreground, #64748b);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
       .driver-popover.driverjs-theme .driver-popover-progress-text {
-        color: #000;
+        color: var(--muted-foreground, #64748b);
+        font-size: 12px;
+        font-weight: 600;
       }
 
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn) {
         flex: 1;
         text-align: center;
-        background-color: #000;
-        color: #ffffff;
-        border: 1px solid #000;
+        background-color: var(--primary, #0ea5e9);
+        color: var(--primary-foreground, #ffffff);
+        border: none;
         text-shadow: none;
-        font-size: 14px;
-        padding: 5px 8px;
-        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: calc(var(--radius, 0.75rem) - 4px);
+        transition: opacity 0.15s ease;
       }
 
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn):focus,
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn):hover {
-        background-color: #000;
-        opacity: 0.8;
-        color: #ffffff;
+        opacity: 0.9;
       }
 
       .driver-popover.driverjs-theme .driver-popover-navigation-btns {
         justify-content: space-between;
-        gap: 3px;
+        gap: 6px;
       }
 
       .driver-popover.driverjs-theme .driver-popover-footer {
         gap: 12px;
+        margin-top: 14px;
       }
 
       .driver-popover.driverjs-theme .driver-popover-progress-text {
@@ -106,34 +120,35 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
       }
 
       .driver-popover.driverjs-theme .driver-popover-footer button.driver-popover-btn-disabled {
-        background-color: transparent;
-        color: rgba(0, 0, 0, 0.35);
-        border-color: rgba(0, 0, 0, 0.2);
-        opacity: 1;
+        background-color: var(--muted, #f1f5f9);
+        color: var(--muted-foreground, #94a3b8);
+        border: 1px solid var(--border, #e2e8f0);
+        opacity: 0.7;
       }
 
       .driver-popover.driverjs-theme .driver-popover-close-btn {
-        color: #9b9b9b;
+        color: var(--muted-foreground, #94a3b8);
+        transition: color 0.15s ease;
       }
 
       .driver-popover.driverjs-theme .driver-popover-close-btn:hover {
-        color: #000;
+        color: var(--foreground, #1e293b);
       }
 
       .driver-popover.driverjs-theme .driver-popover-arrow-side-left.driver-popover-arrow {
-        border-left-color: #fde047;
+        border-left-color: var(--card, #ffffff);
       }
 
       .driver-popover.driverjs-theme .driver-popover-arrow-side-right.driver-popover-arrow {
-        border-right-color: #fde047;
+        border-right-color: var(--card, #ffffff);
       }
 
       .driver-popover.driverjs-theme .driver-popover-arrow-side-top.driver-popover-arrow {
-        border-top-color: #fde047;
+        border-top-color: var(--card, #ffffff);
       }
 
       .driver-popover.driverjs-theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
-        border-bottom-color: #fde047;
+        border-bottom-color: var(--card, #ffffff);
       }
 
       .docs-checklist-green {

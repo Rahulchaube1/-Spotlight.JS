@@ -8,29 +8,28 @@ const permissions = [
   "No attribution required",
 ];
 
-const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5"><path d="M5 12l5 5L20 7"/></svg>`;
+const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary"><path d="M5 12l5 5L20 7"/></svg>`;
 ---
 
-<div class="bg-white border-t border-gray-200 pt-20 pb-28">
+<div class="bg-card border-t border-border py-16 md:py-24">
   <Container>
     <div class="mx-auto max-w-2xl text-center" data-driver-license="MIT">
-      <span class="inline-flex items-center gap-2 rounded-full border-2 border-black bg-yellow-300 px-4 py-1.5 text-sm font-semibold text-black shadow-[3px_3px_0_0_#000]">
-        MIT Licensed
+      <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-foreground">
+        MIT Licensed &bull; Free Forever
       </span>
 
-      <h2 class="mt-5 text-3xl md:text-5xl font-bold tracking-tight text-black !leading-tight">
+      <h2 class="mt-5 text-3xl md:text-5xl font-black tracking-tight text-foreground !leading-tight">
         Free for everyone, <span class="marker">forever</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-lg text-base md:text-lg text-black/60 mb-8">
-        Spotlight.js is open source under the MIT license. Use it in your side
-        projects, your startup, or your client work.
+      <p class="mx-auto mt-4 max-w-lg text-base md:text-lg text-muted-foreground mb-8 font-normal">
+        Spotlight.js is open source under the MIT license by <a href="https://rahulchaube1.com" target="_blank" class="text-primary font-semibold hover:underline">Rahul Chaube</a>. Use it freely in personal projects, startups, or enterprise applications.
       </p>
 
-      <ul class="mx-auto mt-8 grid w-fit grid-cols-1 gap-x-10 gap-y-3 text-left sm:grid-cols-2">
+      <ul class="mx-auto mt-8 grid w-fit grid-cols-1 gap-x-10 gap-y-3.5 text-left sm:grid-cols-2">
         {
           permissions.map((item) => (
-            <li class="flex items-center gap-2.5 text-sm md:text-base font-medium text-black/80">
-              <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-yellow-300 text-black">
+            <li class="flex items-center gap-2.5 text-sm md:text-base font-medium text-foreground">
+              <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/15">
                 <Fragment set:html={checkIcon} />
               </span>
               {item}
@@ -44,10 +43,9 @@ const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 
 <style>
   .marker {
-    background-color: #fef08a;
-    border-radius: 0.4em 0.7em 0.45em 0.65em;
-    padding: 0.02em 0.3em;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    background-color: color-mix(in oklch, var(--primary) 20%, transparent);
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+    padding: 0.05em 0.35em;
   }
 </style>

@@ -26,7 +26,7 @@ const currentYear = new Date().getFullYear();
 
   <TrustedBy />
 
-  <div class="pt-10 md:pt-12 lg:pt-20 pb-12 md:pb-20 bg-white text-black">
+  <div class="pt-10 md:pt-12 lg:pt-20 pb-12 md:pb-20 bg-background text-foreground border-b border-border/50">
     <Container>
       <Examples />
     </Container>
@@ -42,32 +42,31 @@ const currentYear = new Date().getFullYear();
 
   <CallToAction />
 
-  <div class="py-10 bg-black text-white border-t border-gray-800">
+  <div class="py-12 bg-secondary text-secondary-foreground border-t border-border/20">
     <Container>
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
-          <div class="flex items-center justify-center md:justify-start gap-2.5 font-bold text-xl text-white">
-            <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-8 w-auto rounded-md" />
-            <span>Spotlight.js</span>
+          <div class="flex items-center justify-center md:justify-start">
+            <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-8 w-auto object-contain rounded-md" />
           </div>
-          <p class="text-sm text-gray-400 mt-2">
-            MIT Licensed &copy; {currentYear} <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:underline font-medium">Rahul Chaube</a>. Free & Open Source.
+          <p class="text-sm text-secondary-foreground/70 mt-2.5 font-medium">
+            MIT Licensed &copy; {currentYear} <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Rahul Chaube</a>. Free & Open Source.
           </p>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-gray-300">
-          <a href="/docs/installation" class="hover:text-yellow-300 transition-colors">
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-secondary-foreground/80">
+          <a href="/docs/installation" class="hover:text-primary transition-colors">
             Documentation
           </a>
-          <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+          <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
             Portfolio
           </a>
-          <a href="https://www.linkedin.com/in/rahulchaube1/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+          <a href="https://www.linkedin.com/in/rahulchaube1/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
             LinkedIn
           </a>
-          <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+          <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
             GitHub
           </a>
-          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-200 transition-colors font-semibold">
+          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:opacity-80 transition-colors">
             ☕ Sponsor
           </a>
         </div>

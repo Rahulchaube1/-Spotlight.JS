@@ -1,14 +1,14 @@
 ---
 import Container from "./Container.astro";
 
-const boltIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 md:h-5 md:w-5"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>`;
-const heartIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 md:h-5 md:w-5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
-const sparkleIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 md:h-5 md:w-5"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/></svg>`;
+const boltIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-primary"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>`;
+const heartIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-primary"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+const sparkleIcon = `<svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-primary"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/></svg>`;
 
 const stats = [
-  { value: "0", label: "runtime dependencies", icon: boltIcon },
-  { value: "100%", label: "open source & free", icon: heartIcon },
-  { value: "6+", label: "built-in powerhouse features", icon: sparkleIcon },
+  { value: "0", label: "Runtime Dependencies", sub: "Ultra-lightweight vanilla JavaScript", icon: boltIcon },
+  { value: "100%", label: "Open Source & Free", sub: "MIT licensed forever by Rahul Chaube", icon: heartIcon },
+  { value: "6+", label: "Powerhouse Features", sub: "Audio, Confetti, Builder & Telemetry", icon: sparkleIcon },
 ];
 
 const frameworks = [
@@ -24,36 +24,41 @@ const frameworks = [
 const marqueeItems = [...frameworks, ...frameworks, ...frameworks];
 ---
 
-<div class="bg-white border-t border-gray-200 py-14 md:py-20">
+<div class="bg-background border-t border-border py-16 md:py-24">
   <Container>
-    <div class="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
       {
         stats.map((stat) => (
-          <div class="flex flex-col items-center">
-            <div class="text-5xl md:text-6xl font-bold tracking-tight text-black tabular-nums">
+          <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-card border border-border shadow-xs hover:border-primary/50 transition-all">
+            <div class="p-3 rounded-xl bg-primary/10 mb-4">
+              <Fragment set:html={stat.icon} />
+            </div>
+            <div class="text-4xl md:text-5xl font-black tracking-tight text-foreground tabular-nums">
               {stat.value}
             </div>
-            <div class="mt-3 flex items-center gap-2 text-sm md:text-base text-black/60 capitalize font-medium">
-              <Fragment set:html={stat.icon} />
+            <div class="mt-2 text-base font-semibold text-foreground">
               {stat.label}
+            </div>
+            <div class="mt-1 text-xs sm:text-sm text-muted-foreground font-medium">
+              {stat.sub}
             </div>
           </div>
         ))
       }
     </div>
 
-    <p class="mt-14 text-center text-base md:text-lg text-black/60 font-medium">
+    <p class="mt-14 text-center text-sm md:text-base text-muted-foreground font-medium">
       Universal compatibility: works out of the box with any modern JavaScript framework or vanilla HTML.
     </p>
   </Container>
 
   <div class="marquee-mask mt-6 overflow-hidden py-2">
-    <div class="marquee-track flex w-max items-center gap-5">
+    <div class="marquee-track flex w-max items-center gap-4">
       {
         marqueeItems.map((framework) => (
-          <span class="flex items-center gap-2.5 rounded-2xl border-2 border-black bg-white px-5 py-3 shadow-[3px_3px_0_0_#000]">
-            <img src={framework.logo} alt={framework.name} width="28" height="28" class="h-7 w-7" />
-            <span class="text-base font-semibold whitespace-nowrap">{framework.name}</span>
+          <span class="flex items-center gap-2.5 rounded-xl border border-border bg-card px-4 py-2.5 shadow-xs">
+            <img src={framework.logo} alt={framework.name} width="24" height="24" class="h-6 w-6 object-contain" />
+            <span class="text-sm font-semibold whitespace-nowrap text-foreground">{framework.name}</span>
           </span>
         ))
       }

@@ -1,9 +1,9 @@
 ---
 import { ExampleButton } from "./ExampleButton";
 ---
-<h2 class="text-3xl md:text-4xl font-bold mb-2 md:mb-3" data-examples-heading>Examples</h2>
-<p class="text-base md:text-lg text-black/70 leading-relaxed" data-examples-tagline>Click an example below to see driver.js in action, or find more <a
-  class="text-black underline underline-offset-4" href="/docs/installation">in the documentation</a>.</p>
+<h2 class="text-3xl md:text-4xl font-bold mb-2 md:mb-3 text-foreground" data-examples-heading>Live Playground &amp; Examples</h2>
+<p class="text-base md:text-lg text-muted-foreground leading-relaxed" data-examples-tagline>Click an interactive example below to see Spotlight.js in action, or discover full guides <a
+  class="text-primary font-medium underline underline-offset-4 hover:opacity-80 transition-colors" href="/docs/installation">in the documentation</a>.</p>
 
 <div class="flex flex-wrap gap-3 md:gap-3 lg:gap-4 mt-6 md:mt-8" data-example-btns>
   <ExampleButton id="animated-tour" text="Animated Tour" />
@@ -22,8 +22,8 @@ import { ExampleButton } from "./ExampleButton";
   <ExampleButton id="customizing-popover" text="Customizing Popover" />
   <ExampleButton id="hooks-everything" text="Hooks for Everything" />
   <a href="/docs/installation"
-     class="cursor-pointer flex items-center rounded-xl border-2 border-black bg-yellow-300 px-5 py-2 text-base lg:text-lg font-medium text-black shadow-[3px_3px_0_0_#000] transition-all duration-100 hover:bg-yellow-400 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000]">
-    and more ...
+     class="cursor-pointer flex items-center rounded-xl border border-primary/40 bg-primary px-5 py-2 text-base lg:text-lg font-semibold text-primary-foreground shadow-sm transition-all duration-150 hover:opacity-90 active:scale-[0.98]">
+    Explore all guides &rarr;
   </a>
 </div>
 

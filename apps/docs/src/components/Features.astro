@@ -3,95 +3,106 @@ import { Earth, Smartphone, Settings, Feather, Code2, Layers, Keyboard } from "l
 import Container from "./Container.astro";
 ---
 
-<div class="py-0 mb-16 bg-white">
+<div class="py-16 md:py-24 bg-card border-y border-border">
   <Container>
-    <div class="max-w-screen-lg">
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6">Nothing else like it</h2>
-      <p class="text-base md:text-xl lg:text-2xl text-black mb-10 md:mb-14 lg:mb-16">
-        Lightweight with no external dependencies, supports all major browsers and is highly customizable.
+    <div class="max-w-screen-lg mb-12">
+      <div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-foreground mb-3">
+        <span>Engine Capabilities</span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">Engineered for Delightful User Onboarding</h2>
+      <p class="text-base md:text-xl text-muted-foreground">
+        Lightweight with zero external dependencies, highly customizable, and battle-tested for all modern browsers.
       </p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-4">
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Earth className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Earth className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Browser Support</h3>
-        <p class="text-gray-600 md:text-lg">
-          Works in all modern browsers including Chrome, IE9+, Safari, Firefox and Opera
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Universal Compatibility</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Works seamlessly across Chrome, Edge, Safari, Firefox, and mobile WebKit with zero polyfills required.
         </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Smartphone className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Smartphone className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Mobile Ready</h3>
-        <p class="text-gray-600 md:text-lg">Works on desktop, tablets and mobile devices</p>
-      </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Settings className="w-6 h-6 text-black lg:w-7 lg:h-7" />
-        </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Highly Customizable</h3>
-        <p class="text-gray-600 md:text-lg">Powerful API that allows you to customize it to your needs</p>
-      </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Feather className="w-6 h-6 text-black lg:w-7 lg:h-7" />
-        </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Lightweight</h3>
-        <p class="text-gray-600 md:text-lg">
-          Only 5KB minified, compared to other libraries which are typically >12KB minified
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Responsive &amp; Touch Ready</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Smooth viewport tracking and pinch/touch gestures for desktops, tablets, and smartphones.
         </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Code2 className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Settings className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">No Dependencies</h3>
-        <p class="text-gray-600 md:text-lg">Simple to use with absolutely no external dependencies</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Infinitely Customizable</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Granular lifecycle hooks, custom HTML popover renderers, CSS transitions, and SVG path filters.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Layers className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Feather className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Multi-Element Spotlights</h3>
-        <p class="text-gray-600 md:text-lg">Spotlight multiple DOM elements simultaneously with compound SVG cutouts</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Ultra Lightweight</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Microscopic bundle size that keeps your application lightning-fast and respects users' bandwidth.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <span class="w-6 h-6 text-black lg:w-7 lg:h-7 font-black">FX</span>
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Code2 className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Audio & Confetti</h3>
-        <p class="text-gray-600 md:text-lg">Harmonic Web Audio synthesizer feedback and particle celebration engine</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Zero Dependencies</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Pure vanilla JavaScript &amp; TypeScript. No bloated runtime, no React/Vue lock-in, runs everywhere.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Code2 className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Layers className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Visual Tour Builder</h3>
-        <p class="text-gray-600 md:text-lg">Click-and-point on live pages to record steps and export tour code instantly</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Multi-Cutout Spotlights</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Highlight multiple DOM elements simultaneously using single-pass compound SVG overlay paths.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <span class="w-6 h-6 text-black lg:w-7 lg:h-7 font-black">MIT</span>
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold">
+          FX
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">MIT License</h3>
-        <p class="text-gray-600 md:text-lg">Free for both personal and commercial use</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Audio &amp; Confetti</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Built-in Web Audio synthesis sound effects and physics-driven particle confetti celebrations.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <Keyboard className="w-6 h-6 text-black lg:w-7 lg:h-7" />
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Code2 className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Keyboard Control</h3>
-        <p class="text-gray-600 md:text-lg">All actions can be controlled via keyboard</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Visual Tour Builder</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Interactive point-and-click studio to record element tours in real-time and export code instantly.
+        </p>
       </div>
-      <div class="group bg-yellow-50 p-6 rounded-xl transition-colors">
-        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-yellow-300 lg:h-14 lg:w-14">
-          <span class="w-6 h-6 text-black lg:w-7 lg:h-7 font-black">ALL</span>
+
+      <div class="group rounded-2xl border border-border bg-card p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md">
+        <div class="flex justify-center items-center mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+          <Keyboard className="w-6 h-6" />
         </div>
-        <h3 class="mb-3 text-xl md:text-2xl font-bold text-black">Highlight Anything</h3>
-        <p class="text-gray-600 md:text-lg">Highlight any element on the page</p>
+        <h3 class="mb-2 text-lg md:text-xl font-bold text-foreground">Accessible Keyboard Nav</h3>
+        <p class="text-muted-foreground text-sm leading-relaxed">
+          Full ARIA role management, trap-focus accessibility, and intuitive Arrow/Escape keybindings.
+        </p>
       </div>
     </div>
   </Container>

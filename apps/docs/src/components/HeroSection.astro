@@ -2,27 +2,26 @@
 import Container from "./Container.astro";
 ---
 
-<div class="bg-white border-b border-gray-200 select-none">
+<div class="bg-card border-b border-border select-none">
   <Container>
     <div class="flex items-center justify-between h-16">
-      <a href="/" data-nav-logo class="flex items-center justify-end text-xl font-bold text-gray-900 font-semibold gap-2.5">
-        <img src="/Spotlightjs.png" alt="Spotlight.js logo" class="h-10 w-auto rounded-lg shadow-sm" />
-        Spotlight.js
+      <a href="/" data-nav-logo class="flex items-center" aria-label="Spotlight.js Home">
+        <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-9 sm:h-10 w-auto object-contain rounded-lg" />
       </a>
       <span class="flex items-center gap-2 sm:gap-4">
-        <a href="/docs/installation" data-nav-docs class="rounded-lg px-2.5 sm:px-3 py-1.5 text-sm sm:text-base font-medium text-gray-900 transition-colors hover:bg-gray-100">
+        <a href="/docs/installation" data-nav-docs class="rounded-lg px-2.5 sm:px-3 py-1.5 text-sm sm:text-base font-medium text-foreground transition-colors hover:bg-muted">
           <span class="hidden sm:inline">Documentation</span>
           <span class="inline sm:hidden">Docs</span>
         </a>
-        <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-yellow-300 px-3 py-1 text-xs sm:text-sm font-semibold text-black border border-black hover:bg-yellow-400 shadow-[2px_2px_0_0_#000] transition-all">
+        <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-3.5 py-1.5 text-xs sm:text-sm font-semibold hover:opacity-90 shadow-sm transition-all">
           <span>☕</span>
           <span>Sponsor</span>
         </a>
-        <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block rounded-lg px-2.5 py-1.5 text-sm font-medium text-gray-700 hover:text-black hover:bg-gray-100">
+        <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block rounded-lg px-2.5 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted">
           Portfolio
         </a>
-        <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="text-gray-900 hover:text-gray-600">
-          <svg viewBox="0 0 496 512" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+        <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="text-foreground hover:text-primary transition-colors p-1">
+          <svg viewBox="0 0 496 512" fill="currentColor" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true">
             <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
           </svg>
         </a>
@@ -30,22 +29,29 @@ import Container from "./Container.astro";
     </div>
   </Container>
 </div>
-<div class="bg-yellow-300/80 overflow-hidden via-transparent">
+
+<div class="relative overflow-hidden border-b border-border bg-gradient-to-b from-background via-card to-background">
   <Container>
-    <div class="py-10 md:py-14 lg:py-25 flex justify-start items-center gap-4">
-      <div class="flex-grow" data-hero-text>
-        <h1 data-driver-name class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl mb-2 md:mb-3 lg:mb-4 font-bold tracking-tight">Spotlight.js</h1>
-        <p data-driver-tagline class="text-base md:text-2xl lg:text-3xl !leading-normal">
-          The modern, zero-dependency JavaScript library for interactive product tours, multi-element spotlights, audio feedback, and onboarding checklists.
+    <div class="py-12 md:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-7 flex flex-col justify-center text-left" data-hero-text>
+        <div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs sm:text-sm font-semibold text-foreground w-fit mb-4">
+          <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+          <span>Zero-Dependency Vanilla Tour &amp; Spotlight Engine</span>
+        </div>
+        <h1 data-driver-name class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-foreground leading-[1.08] mb-4">
+          Spotlight<span class="text-primary">.js</span>
+        </h1>
+        <p data-driver-tagline class="text-base sm:text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl font-normal mb-8">
+          The modern, zero-dependency JavaScript library for interactive product tours, multi-element spotlights, Web Audio sound feedback, and onboarding checklists.
         </p>
-        <div class="mt-4 md:mt-8 lg:mt-10 flex flex-col sm:flex-row gap-4 items-stretch">
+        <div class="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center">
           <div class="relative" data-demo-split>
             <div
-              class="flex items-stretch overflow-hidden rounded-2xl border-2 border-black bg-gray-800 text-white shadow-[5px_5px_0_0_#000] transition-all active:translate-x-[3px] active:translate-y-[3px] active:shadow-[2px_2px_0_0_#000]"
+              class="flex items-stretch overflow-hidden rounded-xl border border-primary/40 bg-primary text-primary-foreground shadow-sm transition-all hover:opacity-95 active:scale-[0.99]"
             >
               <button
                 data-demo-tour
-                class="flex-1 cursor-pointer px-7 py-2.5 md:py-3 text-lg md:text-xl font-semibold hover:bg-gray-700 focus:outline-none focus-visible:outline-none"
+                class="flex-1 cursor-pointer px-6 py-3 text-base sm:text-lg font-semibold hover:bg-white/10 focus:outline-none"
               >
                 Show Demo
               </button>
@@ -55,7 +61,7 @@ import Container from "./Container.astro";
                 aria-haspopup="true"
                 aria-expanded="false"
                 aria-label="Choose a demo"
-                class="flex cursor-pointer items-center border-l-2 border-black px-3 hover:bg-gray-700 focus:outline-none focus-visible:outline-none"
+                class="flex cursor-pointer items-center border-l border-white/20 px-3 hover:bg-white/10 focus:outline-none"
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z" clip-rule="evenodd" />
@@ -64,25 +70,46 @@ import Container from "./Container.astro";
             </div>
             <div
               data-demo-menu
-              class="fixed z-50 hidden w-56 overflow-hidden rounded-xl border-2 border-black bg-white shadow-[4px_4px_0_0_#000]"
+              class="fixed z-50 hidden w-60 overflow-hidden rounded-xl border border-border bg-card p-1 shadow-lg text-foreground"
             >
-              <button data-demo-item="tour" type="button" class="block w-full cursor-pointer px-4 py-2.5 text-left text-base font-medium text-black hover:bg-yellow-200">Product tour</button>
-              <button data-demo-item="hints" type="button" class="block w-full cursor-pointer border-t-2 border-black px-4 py-2.5 text-left text-base font-medium text-black hover:bg-yellow-200">Feature hints</button>
-              <button data-demo-item="highlight" type="button" class="block w-full cursor-pointer border-t-2 border-black px-4 py-2.5 text-left text-base font-medium text-black hover:bg-yellow-200">Simple highlight</button>
-              <button data-demo-item="checklist" type="button" class="block w-full cursor-pointer border-t-2 border-black px-4 py-2.5 text-left text-base font-medium text-black hover:bg-yellow-200">Onboarding checklist</button>
+              <button data-demo-item="tour" type="button" class="block w-full cursor-pointer rounded-lg px-4 py-2.5 text-left text-sm font-medium hover:bg-muted transition-colors">✨ Interactive Product Tour</button>
+              <button data-demo-item="hints" type="button" class="block w-full cursor-pointer rounded-lg px-4 py-2.5 text-left text-sm font-medium hover:bg-muted transition-colors">💡 Pulsing Feature Hints</button>
+              <button data-demo-item="highlight" type="button" class="block w-full cursor-pointer rounded-lg px-4 py-2.5 text-left text-sm font-medium hover:bg-muted transition-colors">🔦 Simple Element Spotlight</button>
+              <button data-demo-item="checklist" type="button" class="block w-full cursor-pointer rounded-lg px-4 py-2.5 text-left text-sm font-medium hover:bg-muted transition-colors">📋 Onboarding Checklist</button>
             </div>
           </div>
           <a
             href="/docs/installation"
             data-docs-link
-            class="cursor-pointer rounded-2xl border-2 border-black bg-white px-7 py-2.5 md:py-3 text-center text-lg md:text-xl font-semibold text-black shadow-[5px_5px_0_0_#000] transition-all hover:bg-gray-100 active:translate-x-[3px] active:translate-y-[3px] active:shadow-[2px_2px_0_0_#000] focus:outline-none focus-visible:outline-none"
+            class="cursor-pointer rounded-xl border border-border bg-card px-6 py-3 text-center text-base sm:text-lg font-semibold text-foreground shadow-xs transition-all hover:bg-muted/70 hover:border-primary/50 focus:outline-none"
           >
-            Get Started
+            Get Started &rarr;
           </a>
         </div>
       </div>
-      <div class="flex-shrink-0 hidden sm:flex">
-        <img src="/Spotlightjs.png" alt="Spotlight.js logo" class="w-auto sm:h-56 md:h-64 lg:h-[300px] relative top-[12px] rounded-2xl shadow-xl" />
+
+      <div class="lg:col-span-5 flex justify-center lg:justify-end items-center">
+        <div class="relative w-full max-w-[360px] sm:max-w-[420px] rounded-2xl border border-border bg-card p-6 shadow-md transition-all">
+          <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-border/60">
+            <div class="flex items-center gap-1.5">
+              <span class="h-3 w-3 rounded-full bg-red-400"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-400"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+            </div>
+            <span class="text-xs font-mono text-muted-foreground font-medium">Spotlight.js Preview</span>
+          </div>
+          <div class="flex items-center justify-center p-4 bg-muted/30 rounded-xl border border-border/40">
+            <img
+              src="/Spotlightjs.png"
+              alt="Spotlight.js"
+              class="w-full max-w-[280px] h-auto object-contain rounded-xl"
+            />
+          </div>
+          <div class="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground font-medium">
+            <span>Vanilla TypeScript</span>
+            <span class="text-primary font-semibold">0 Dependencies</span>
+          </div>
+        </div>
       </div>
     </div>
   </Container>
@@ -94,57 +121,56 @@ import Container from "./Container.astro";
   }
 
   .driver-popover.hero-hint-popover {
-    background-color: #ffffff;
-    color: #111827;
-    border-radius: 14px;
-    box-shadow:
-      0 14px 34px rgba(17, 24, 39, 0.18),
-      0 2px 6px rgba(17, 24, 39, 0.08);
+    background-color: var(--card, #ffffff);
+    color: var(--foreground, #1e293b);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius, 0.75rem);
+    box-shadow: 0 14px 34px rgba(17, 24, 39, 0.12), 0 2px 6px rgba(17, 24, 39, 0.06);
   }
 
   .driver-popover.hero-hint-popover .driver-popover-title {
-    color: #111827;
-    font-weight: 600;
+    color: var(--foreground, #1e293b);
+    font-weight: 700;
   }
 
   .driver-popover.hero-hint-popover .driver-popover-description {
-    color: rgba(17, 24, 39, 0.66);
+    color: var(--muted-foreground, #64748b);
   }
 
   .driver-popover.hero-hint-popover .driver-popover-close-btn {
-    color: rgba(17, 24, 39, 0.55);
+    color: var(--muted-foreground, #64748b);
   }
   .driver-popover.hero-hint-popover .driver-popover-close-btn:hover {
-    color: #111827;
+    color: var(--foreground, #1e293b);
   }
 
   .driver-popover.hero-hint-popover .driver-popover-footer-btn {
-    background-color: #4f46e5;
-    color: #ffffff;
+    background-color: var(--primary, #0284c7);
+    color: var(--primary-foreground, #ffffff);
     border: none;
-    border-radius: 9px;
+    border-radius: calc(var(--radius, 0.75rem) - 4px);
     text-shadow: none;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 13px;
-    padding: 9px 20px;
+    padding: 8px 18px;
     box-shadow: none;
   }
 
   .driver-popover.hero-hint-popover .driver-popover-footer-btn:hover {
-    background-color: #4338ca;
+    opacity: 0.9;
   }
 
   .driver-popover.hero-hint-popover .driver-popover-arrow-side-left.driver-popover-arrow {
-    border-left-color: #ffffff;
+    border-left-color: var(--card, #ffffff);
   }
   .driver-popover.hero-hint-popover .driver-popover-arrow-side-right.driver-popover-arrow {
-    border-right-color: #ffffff;
+    border-right-color: var(--card, #ffffff);
   }
   .driver-popover.hero-hint-popover .driver-popover-arrow-side-top.driver-popover-arrow {
-    border-top-color: #ffffff;
+    border-top-color: var(--card, #ffffff);
   }
   .driver-popover.hero-hint-popover .driver-popover-arrow-side-bottom.driver-popover-arrow {
-    border-bottom-color: #ffffff;
+    border-bottom-color: var(--card, #ffffff);
   }
 </style>
 
@@ -211,7 +237,7 @@ import Container from "./Container.astro";
               beacon: { side: "bottom", align: "end" },
               popover: {
                 description:
-                  "<img src='/fox-looking.gif' alt='' style='display:block;width:100px;height:100px;margin:0 auto 20px;' />A pulsing beacon marks a spot and opens a popover when clicked.",
+                  "<img src='/Spotlightjs.png' alt='Spotlight.js' style='display:block;width:90px;height:auto;margin:0 auto 16px;border-radius:8px;' />A pulsing beacon marks any spot on the page and opens a popover when clicked.",
                 side: "bottom",
                 align: "start",
                 showButton: false,
@@ -243,7 +269,6 @@ import Container from "./Container.astro";
           ],
         });
       } else {
-        // Re-running the demo brings every hint back, even dismissed ones.
         heroHints.restoreAll();
       }
 
@@ -294,7 +319,6 @@ import Container from "./Container.astro";
       });
     }
 
-    // Started from the homepage checklist, which can be anywhere down the page.
     document.addEventListener("driver-docs:show-hints", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       runHints();
@@ -304,7 +328,6 @@ import Container from "./Container.astro";
     if (checklistItem) {
       checklistItem.addEventListener("click", () => {
         closeMenu();
-        // Owned by the examples section, which also has a button for it.
         document.dispatchEvent(new CustomEvent("driver-docs:show-checklist"));
       });
     }

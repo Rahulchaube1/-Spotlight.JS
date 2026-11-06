@@ -11,7 +11,7 @@ export function ExampleButton(props: ExampleButtonProps) {
     <button
       id={id}
       onClick={onClick}
-      className="cursor-pointer rounded-xl border-2 border-black bg-white px-4 py-2 font-medium text-black md:text-base lg:text-lg shadow-[3px_3px_0_0_#000] transition-all duration-100 hover:bg-yellow-300 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000] focus:outline-none focus-visible:outline-none">
+      className="cursor-pointer rounded-xl border border-border bg-card px-4 py-2 font-medium text-foreground md:text-base lg:text-lg shadow-sm transition-all duration-150 hover:bg-muted hover:border-primary active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
       { text }
     </button>
   );

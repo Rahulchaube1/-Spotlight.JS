@@ -9,16 +9,16 @@ export interface Props {
 
 const { activePath, groupedGuides, activeGuideTitle } = Astro.props;
 ---
-<div id="docs-sidebar" class="hidden md:block w-[200px] lg:w-[350px] border-r border-gray-200 text-right min-h-screen flex-shrink-0">
+<div id="docs-sidebar" class="hidden md:block w-[200px] lg:w-[320px] border-r border-border bg-card text-right min-h-screen flex-shrink-0">
   <div class="relative sh:sticky top-0">
-    <div class="justify-end flex flex-col items-end pt-10 pb-5 px-5 gap-3">
-      <a href="/" class="block items-center justify-end">
-        <img src="/Spotlightjs.png" alt="Spotlight.js logo" class="h-16 w-auto rounded-xl shadow-md" />
+    <div class="justify-end flex flex-col items-end pt-8 pb-5 px-5 gap-3">
+      <a href="/" class="block items-center justify-end" aria-label="Spotlight.js Home">
+        <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-12 w-auto object-contain rounded-lg" />
       </a>
       <div class="flex items-center gap-2 text-xs font-semibold">
-        <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black">GitHub</a>
-        <span class="text-gray-300">&middot;</span>
-        <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-amber-600 hover:text-amber-700">☕ Sponsor</a>
+        <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+        <span class="text-border">&middot;</span>
+        <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-primary hover:opacity-80 transition-colors">☕ Sponsor</a>
       </div>
     </div>
 
@@ -27,14 +27,14 @@ const { activePath, groupedGuides, activeGuideTitle } = Astro.props;
 
       return (
         <>
-          <h2 class="text-xl font-bold mb-2 pr-5 relative">{groupTitle}</h2>
-          <ul class="text-gray-400 mb-5">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2 pr-5 relative">{groupTitle}</h2>
+          <ul class="mb-6">
             {guides.map(guide => {
               const guidePath = `/docs/${guide.id}`;
               return (
-                <li class="mb-2">
+                <li class="mb-1.5">
                   <a href={guidePath}
-                     class:list={["hover:text-black pr-5 py-2", { "text-black": activeGuideTitle === guide.data.title }]}>{guide.data.title}</a>
+                     class:list={["block text-sm pr-5 py-1.5 rounded-l-md transition-colors", { "text-primary font-semibold bg-primary/10 border-r-2 border-primary": activeGuideTitle === guide.data.title, "text-muted-foreground hover:text-foreground": activeGuideTitle !== guide.data.title }]}>{guide.data.title}</a>
                 </li>
               );
             })}
