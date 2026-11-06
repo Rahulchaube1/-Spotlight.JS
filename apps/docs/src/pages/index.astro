@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FeatureMarquee from "../components/FeatureMarquee.astro";
+import TrustedBy from "../components/TrustedBy.astro";
+import Container from "../components/Container.astro";
+import UsecaseItem from "../components/UsecaseItem.astro";
+import { ExampleButton } from "../components/ExampleButton";
+import HeroSection from "../components/HeroSection.astro";
+import Examples from "../components/Examples.astro";
+import UsecaseList from "../components/UsecaseList.astro";
+import CodeShowcase from "../components/CodeShowcase.astro";
+import Stats from "../components/Stats.astro";
+import License from "../components/License.astro";
+import CallToAction from "../components/CallToAction.astro";
+
+const currentYear = new Date().getFullYear();
+---
+<BaseLayout
+  title="Spotlight.js - The Modern, Delightful Web Tour & Spotlight Library"
+  description="Spotlight.js is a modern, zero-dependency JavaScript library for building product tours, multi-element spotlights, audio feedback, confetti celebrations, and onboarding checklists."
+  permalink="/"
+>
+  <HeroSection />
+
+  <FeatureMarquee />
+
+  <TrustedBy />
+
+  <div class="pt-10 md:pt-12 lg:pt-20 pb-12 md:pb-20 bg-white text-black">
+    <Container>
+      <Examples />
+    </Container>
+  </div>
+
+  <UsecaseList />
+
+  <CodeShowcase />
+
+  <Stats />
+
+  <License />
+
+  <CallToAction />
+
+  <div class="py-10 bg-black text-white border-t border-gray-800">
+    <Container>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2.5 font-bold text-xl text-white">
+            <img src="/Spotlightjs.png" alt="Spotlight.js" class="h-8 w-auto rounded-md" />
+            <span>Spotlight.js</span>
+          </div>
+          <p class="text-sm text-gray-400 mt-2">
+            MIT Licensed &copy; {currentYear} <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:underline font-medium">Rahul Chaube</a>. Free & Open Source.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-gray-300">
+          <a href="/docs/installation" class="hover:text-yellow-300 transition-colors">
+            Documentation
+          </a>
+          <a href="https://rahulchaube1.com" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+            Portfolio
+          </a>
+          <a href="https://www.linkedin.com/in/rahulchaube1/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+            LinkedIn
+          </a>
+          <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 transition-colors">
+            GitHub
+          </a>
+          <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-200 transition-colors font-semibold">
+            ☕ Sponsor
+          </a>
+        </div>
+      </div>
+    </Container>
+  </div>
+</BaseLayout>

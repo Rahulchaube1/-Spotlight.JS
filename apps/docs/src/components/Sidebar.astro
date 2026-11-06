@@ -1,0 +1,46 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { getFormattedStars } from "../lib/github";
+import { getAllGuides } from "../lib/guide";
+
+export interface Props {
+  activePath: string;
+}
+
+const { activePath, groupedGuides, activeGuideTitle } = Astro.props;
+---
+<div id="docs-sidebar" class="hidden md:block w-[200px] lg:w-[350px] border-r border-gray-200 text-right min-h-screen flex-shrink-0">
+  <div class="relative sh:sticky top-0">
+    <div class="justify-end flex flex-col items-end pt-10 pb-5 px-5 gap-3">
+      <a href="/" class="block items-center justify-end">
+        <img src="/Spotlightjs.png" alt="Spotlight.js logo" class="h-16 w-auto rounded-xl shadow-md" />
+      </a>
+      <div class="flex items-center gap-2 text-xs font-semibold">
+        <a href="https://github.com/Rahulchaube1/-Spotlight.JS" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black">GitHub</a>
+        <span class="text-gray-300">&middot;</span>
+        <a href="https://buymeacoffee.com/rahulchaube" target="_blank" rel="noopener noreferrer" class="text-amber-600 hover:text-amber-700">☕ Sponsor</a>
+      </div>
+    </div>
+
+    {Object.keys(groupedGuides).map(groupTitle => {
+      const guides = groupedGuides[groupTitle];
+
+      return (
+        <>
+          <h2 class="text-xl font-bold mb-2 pr-5 relative">{groupTitle}</h2>
+          <ul class="text-gray-400 mb-5">
+            {guides.map(guide => {
+              const guidePath = `/docs/${guide.id}`;
+              return (
+                <li class="mb-2">
+                  <a href={guidePath}
+                     class:list={["hover:text-black pr-5 py-2", { "text-black": activeGuideTitle === guide.data.title }]}>{guide.data.title}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      );
+    })}
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "name": "spotlight-js",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/docs/animated-tour", "destination": "/docs/tour-basics#animated-tour", "permanent": true },
+    { "source": "/docs/static-tour", "destination": "/docs/tour-basics#static-tour", "permanent": true },
+    { "source": "/docs/tour-progress", "destination": "/docs/tour-basics#tour-progress", "permanent": true },
+    { "source": "/docs/interactive-tour", "destination": "/docs/interactive-tours", "permanent": true },
+    { "source": "/docs/async-tour", "destination": "/docs/interactive-tours#async-steps", "permanent": true },
+    { "source": "/docs/multi-page-tour", "destination": "/docs/interactive-tours#multi-page-tours", "permanent": true },
+    { "source": "/docs/confirm-on-exit", "destination": "/docs/ending-a-tour#confirm-on-exit", "permanent": true },
+    { "source": "/docs/prevent-destroy", "destination": "/docs/ending-a-tour#prevent-exit", "permanent": true },
+    { "source": "/docs/popover-position", "destination": "/docs/popover#position", "permanent": true },
+    { "source": "/docs/buttons", "destination": "/docs/popover#buttons", "permanent": true },
+    { "source": "/docs/styling-popover", "destination": "/docs/styling#popover", "permanent": true },
+    { "source": "/docs/styling-overlay", "destination": "/docs/styling#overlay", "permanent": true },
+    { "source": "/docs/styling-hints", "destination": "/docs/hints#styling", "permanent": true }
+  ]
+}

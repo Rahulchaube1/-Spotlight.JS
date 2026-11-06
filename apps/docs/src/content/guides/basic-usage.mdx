@@ -1,0 +1,116 @@
+---
+title: "Basic Usage"
+description: "Get started with Spotlight.js: import the library, configure your steps, and create your first multi-step product tour or element highlight in minutes."
+groupTitle: "Introduction"
+sort: 2
+---
+
+import { CodeSample } from "../../components/CodeSample.tsx";
+import { HintsSample } from "../../components/HintsSample.tsx";
+
+Once installed, you can import and start using Spotlight.js. There are several different configuration options available to customize the library. You can find more details about the options in the [configuration section](/docs/configuration). Given below are the basic steps to get started.
+
+Here is a simple example of how to create a tour with multiple steps:
+
+<CodeSample
+  heading={'Basic Tour Example'}
+  config={{
+    showProgress: true,
+  }}
+  tour={[
+    { element: '#tour-example', popover: { title: 'Highlight Anything', description: 'You can highlight anything on the page.' }},
+    { element: '#tour-example pre', popover: { title: 'Control with Keyboard', description: 'You can use your keyboard to highlight elements.' }},
+    { popover: { title: 'Control with Keyboard', description: 'You can use your keyboard to highlight elements.' }},
+    { element: '#tour-example code .line:first-child', popover: { title: 'Control with Code', description: 'You can use the code to highlight elements.' }},
+    { element: '#tour-example code .line:nth-child(2)', popover: { title: 'Control with Code', description: 'You can use the code to highlight elements.', side: "bottom", align: 'start' }},
+  ]}
+  id={"tour-example"}
+  client:load
+>
+```js
+import { spotlight } from "spotlight.js";
+import "spotlight.js/dist/spotlight.css";
+
+const tour = spotlight({
+  showProgress: true,
+  sound: true,
+  celebrateOnDone: true,
+  steps: [
+    { element: '.page-header', popover: { title: 'Title', description: 'Description' } },
+    { element: '.top-nav', popover: { title: 'Title', description: 'Description' } },
+    { element: '.sidebar', popover: { title: 'Title', description: 'Description' } },
+    { element: '.footer', popover: { title: 'Title', description: 'Description' } },
+  ]
+});
+
+tour.drive();
+```
+</CodeSample>
+
+You can pass a single step configuration to the `highlight` method to spotlight a single element. Given below is a simple example:
+
+<CodeSample heading='Highlighting a simple Element' id={"some-element"} highlight={{
+  element: '#some-element',
+  popover: {
+    title: 'Title for the Popover',
+    description: 'Description for it',
+  },
+}} client:load>
+```js
+import { spotlight } from "spotlight.js";
+import "spotlight.js/dist/spotlight.css";
+
+const tour = spotlight();
+tour.highlight({
+  element: '#some-element',
+  popover: {
+    title: 'Title for the Popover',
+    description: 'Description for it',
+  },
+});
+```
+</CodeSample>
+
+Beyond tours and highlights, Spotlight.js also ships hints: pulsing beacons that sit quietly on the page and open a popover when clicked, with no overlay and nothing blocked:
+
+<HintsSample
+  idPrefix="basic"
+  buttonText="Show Hints"
+  hints={[
+    {
+      element: "#basic-export",
+      id: "export",
+      popover: {
+        title: "Export your data",
+        description: "Download this report as CSV or PDF.",
+      },
+    },
+    {
+      element: "#basic-summary",
+      id: "summary",
+      beacon: { side: "left", align: "center" },
+      popover: {
+        title: "Auto-generated summary",
+        description: "This paragraph is written for you from the quarter's numbers.",
+        side: "bottom",
+      },
+    },
+  ]}
+  client:load
+/>
+
+```js
+import { hints } from "spotlight.js/hints";
+import "spotlight.js/dist/hints.css";
+
+const productHints = hints({
+  hints: [
+    { element: '#export-btn', popover: { title: 'Export your data', description: 'Download this report as CSV or PDF.' } },
+    { element: '#summary', popover: { title: 'Auto-generated summary', description: 'Written for you from the numbers.' } },
+  ],
+});
+
+productHints.show();
+```
+
+Learn more about beacons, dismissals, and the optional overlay in the [Hints guide](/docs/hints).

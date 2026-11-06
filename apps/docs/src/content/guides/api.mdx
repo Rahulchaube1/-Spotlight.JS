@@ -1,0 +1,175 @@
+---
+title: "API Reference"
+description: "Complete Spotlight.js API reference: every method available on spotlight, hints and checklist instances, including visual tour builder, sound, and celebrations."
+groupTitle: "Introduction"
+sort: 4
+---
+
+Here is the list of methods provided by `spotlight` when you initialize it.
+
+> **Note:** We have omitted the configuration options for brevity. Please look at the configuration section for the options. Links are provided in the description below.
+
+```javascript
+import { spotlight } from "spotlight.js";
+import "spotlight.js/dist/spotlight.css";
+
+// Look at the configuration section for the options
+// https://Spotlightjs.rahulchaube1.com/docs/configuration#driver-configuration
+const tour = spotlight({
+  /* ... */
+});
+
+// --------------------------------------------------
+// tour is an object with the following methods
+// --------------------------------------------------
+
+// Start the tour using `steps` given in the configuration
+tour.drive(); // Starts at step 0
+tour.drive(4); // Starts at step 4
+
+tour.moveNext(); // Move to the next step
+tour.movePrevious(); // Move to the previous step
+tour.moveTo(4); // Move to the step 4
+tour.hasNextStep(); // Is there a next step
+tour.hasPreviousStep(); // Is there a previous step
+
+tour.isFirstStep(); // Is the current step the first step
+tour.isLastStep(); // Is the current step the last step
+
+tour.getActiveIndex(); // Gets the active step index
+
+tour.getActiveStep(); // Gets the active step configuration
+tour.getPreviousStep(); // Gets the previous step configuration
+tour.getNextStep(); // Gets the next step configuration
+tour.getActiveElement(); // Gets the active HTML element
+tour.getPreviousElement(); // Gets the previous HTML element
+
+// Is the tour or highlight currently active
+tour.isActive();
+
+// Recalculate and redraw the highlight
+tour.refresh();
+
+// Look at the configuration section for configuration options
+tour.getConfig();
+tour.setConfig({
+  /* ... */
+});
+
+tour.setSteps([
+  /* ... */
+]); // Set the steps
+
+tour.getState();
+
+// Spotlight an element directly
+tour.highlight({
+  /* ... */
+});
+
+// Modern Spotlight.js Powerhouse Methods
+tour.startTourBuilder(); // Launch interactive click-to-record tour inspector
+tour.stopTourBuilder();  // Exit tour builder mode
+tour.triggerConfetti();  // Shoot full-screen particle celebration confetti
+tour.playSound("chime"); // Synthesize audio feedback tone ("chime" | "click" | "pop" | "success")
+tour.showCheatsheet();   // Show keyboard shortcuts overlay modal
+tour.hideCheatsheet();   // Hide keyboard shortcuts overlay modal
+
+// Destroy the tour. The destroy hooks receive `options.reason` "api",
+// or the reason of the user action when called from inside a hook.
+tour.destroy();
+```
+
+> Each `driver()` call returns its own independent instance. You can create as many as you need on the same page, and their configuration, steps, and state never overlap. Only one instance can be on screen at a time, so starting a tour or highlight on one instance closes whichever instance is currently active.
+
+## Hints
+
+Hints ship as their own entry and factory. See the [Hints guide](/docs/hints) for an introduction, and the [Hints Configuration](/docs/configuration#hints-configuration) section for the options.
+
+```javascript
+import { hints } from "spotlight.js/hints";
+import "Spotlight.js/dist/hints.css";
+
+// Look at the configuration section for the options
+// https://Spotlightjs.rahulchaube1.com/docs/configuration#hints-configuration
+const productHints = hints({
+  /* ... */
+});
+
+// -----------------------------------------------------
+// productHints is an object with the following methods
+// -----------------------------------------------------
+
+// Mount the beacons. Calling it again picks up hints
+// whose elements have appeared since.
+productHints.show();
+// Remove the beacons and listeners; show() brings them back
+productHints.hide();
+
+// Hints are addressed by their `id`, or by their
+// index in the array when no id is set.
+productHints.open("export"); // Open a hint's popover
+productHints.close(); // Close the open popover, keeping its beacon
+productHints.dismiss("export"); // Remove the hint's beacon and fire onDismiss
+productHints.restore("export"); // Bring a dismissed hint back
+productHints.restoreAll(); // Bring every dismissed hint back
+
+productHints.setHints([
+  /* ... */
+]); // Replace the hints; resets dismissals
+productHints.getHints(); // The configured hints
+productHints.getActive(); // The hint whose popover is open, if any
+
+productHints.isVisible(); // Whether the beacons are currently shown
+
+// Reposition the beacons, the open popover and the
+// overlay after layout changes
+productHints.refresh();
+```
+
+> Like `driver()`, each `hints()` call is independent: its hints, dismissals, and overlay never affect another instance or a running tour.
+
+## Checklists
+
+Checklists ship as their own entry and factory. See the [Checklists guide](/docs/checklists) for an introduction, and the [Checklist Configuration](/docs/configuration#checklist-configuration) section for the options.
+
+```javascript
+import { checklist } from "spotlight.js/checklist";
+import "spotlight.js/dist/spotlight.css";
+import "Spotlight.js/dist/checklist.css";
+
+// Look at the configuration section for the options
+// https://Spotlightjs.rahulchaube1.com/docs/configuration#checklist-configuration
+const onboarding = checklist({
+  /* ... */
+});
+
+// ---------------------------------------------------
+// onboarding is an object with the following methods
+// ---------------------------------------------------
+
+// Add the launcher to the page; hide() removes the widget
+onboarding.show();
+onboarding.hide();
+
+onboarding.open(); // Open the panel
+onboarding.close(); // Close the panel, keeping the launcher
+onboarding.toggle(); // Open or close the panel
+
+// Items are addressed by their `id`.
+onboarding.start("tour"); // Run the item's tour, link or action
+onboarding.complete("github"); // Tick an item
+onboarding.uncomplete("github"); // Untick an item
+onboarding.reset(); // Untick every item
+
+// Check every item's completeWhen again
+onboarding.refresh();
+
+onboarding.getProgress(); // { completed: ["tour"], done: 1, total: 4 }
+onboarding.getItems(); // The configured items
+
+onboarding.isVisible(); // Whether the widget is on the page
+onboarding.isOpen(); // Whether the panel is open
+```
+
+> Tours started from a checklist run like any other tour, so starting one closes whichever tour is currently active. Items that are done can still be clicked to run their tour again.

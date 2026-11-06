@@ -1,0 +1,66 @@
+@import "./popover.css";
+
+.spotlight-active .spotlight-overlay,
+.spotlight-active .driver-overlay,
+.driver-active .spotlight-overlay,
+.driver-active .driver-overlay {
+  pointer-events: none;
+}
+
+.spotlight-active.spotlight-no-scroll,
+.driver-active.driver-no-scroll {
+  overflow: hidden;
+}
+
+.spotlight-active *,
+.driver-active * {
+  pointer-events: none;
+}
+
+.spotlight-active .spotlight-active-element,
+.spotlight-active .driver-active-element,
+.spotlight-active .spotlight-active-element *,
+.spotlight-active .driver-active-element *,
+.driver-active .spotlight-active-element,
+.driver-active .driver-active-element,
+.driver-active .spotlight-active-element *,
+.driver-active .driver-active-element *,
+.spotlight-popover,
+.spotlight-popover *,
+.driver-popover,
+.driver-popover * {
+  pointer-events: auto;
+}
+
+@keyframes spotlight-fade-in {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.spotlight-fade .spotlight-overlay,
+.spotlight-fade .driver-overlay,
+.driver-fade .driver-overlay {
+  animation: spotlight-fade-in var(--spotlight-animation-duration, var(--driver-animation-duration, 400ms)) ease-in-out;
+}
+
+.spotlight-fade .spotlight-popover,
+.spotlight-fade .driver-popover,
+.driver-fade .driver-popover {
+  animation: spotlight-fade-in var(--spotlight-animation-duration, var(--driver-animation-duration, 400ms));
+}
+
+.spotlight-active-element-parent-no-scroll,
+.driver-active-element-parent-no-scroll {
+  overflow: hidden !important;
+}
+
+.spotlight-no-interaction,
+.spotlight-no-interaction *,
+.driver-no-interaction,
+.driver-no-interaction * {
+  pointer-events: none !important;
+}

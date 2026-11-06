@@ -1,0 +1,98 @@
+---
+title: "Installation"
+description: "Install Spotlight.js with npm, yarn, pnpm, or a CDN script tag and add the modern, zero-dependency JavaScript tour and spotlight library to your project in seconds."
+groupTitle: "Introduction"
+sort: 1
+---
+
+Run one of the following commands to install the package:
+
+```bash
+# Using npm
+npm install spotlight.js
+
+# Using pnpm
+pnpm install spotlight.js
+
+# Using yarn
+yarn add spotlight.js
+```
+
+Alternatively, you can use CDN and include the script in your HTML file:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/spotlight.js.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/spotlight.css" />
+
+<!-- Only if you use hints -->
+<script src="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/hints.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/hints.css" />
+
+<!-- Only if you use checklists -->
+<script src="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/checklist.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spotlight.js@latest/dist/checklist.css" />
+```
+
+## Start Using
+
+Once installed, you can import the package in your project. The following example shows how to highlight an element:
+
+```js
+import { spotlight } from "spotlight.js";
+import "spotlight.js/dist/spotlight.css";
+
+const tour = spotlight();
+tour.highlight({
+  element: "#some-element",
+  popover: {
+    title: "Title",
+    description: "Description",
+  },
+});
+```
+
+[Hints](/docs/hints) ship as their own entry with a self-contained stylesheet, so import them only when you use them:
+
+```js
+import { hints } from "spotlight.js/hints";
+import "spotlight.js/dist/hints.css";
+```
+
+[Checklists](/docs/checklists) work the same way. Their items run tours, so keep `spotlight.css` alongside:
+
+```js
+import { checklist } from "spotlight.js/checklist";
+import "spotlight.js/dist/checklist.css";
+```
+
+### Note on CDN
+
+If you are using the CDN, you can use the package from the `window` object:
+
+```js
+const spotlight = window["spotlight.js"].spotlight;
+
+const tour = spotlight();
+
+tour.highlight({
+  element: "#some-element",
+  popover: {
+    title: "Title",
+    description: "Description",
+  },
+});
+```
+
+The hints build exposes its own global:
+
+```js
+const hints = window.spotlightHints.hints;
+```
+
+And so does the checklist build. Load it after the main script, which it uses to run tours:
+
+```js
+const checklist = window.spotlightChecklist.checklist;
+```
+
+Continue reading the [Getting Started](/docs/basic-usage) guide to learn more about Spotlight.js.

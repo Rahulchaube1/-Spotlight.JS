@@ -1,0 +1,36 @@
+---
+import Container from "./Container.astro";
+---
+<div class="pt-10 md:pt-12 lg:pt-24 pb-16 md:pb-20 lg:pb-28 bg-white text-black border-t border-gray-200">
+  <Container>
+    <div class="flex items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4">Open Source & Free</h2>
+        <p class="md:text-xl lg:text-2xl text-black mb-6 lg:mb-8">Spotlight.js is an <span class="font-bold">MIT licensed</span>
+          open source project maintained by <a href="https://rahulchaube1.com" target="_blank" class="underline font-semibold">Rahul Chaube</a>. Free forever for personal and commercial applications.</p>
+
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+          <a href="https://github.com/Rahulchaube1/-Spotlight.JS"
+             data-github-link
+             target="_blank"
+             rel="noopener noreferrer"
+             class="flex justify-center items-center font-medium text-lg md:text-xl rounded-xl py-2.5 px-6 bg-yellow-300 border-2 border-black hover:bg-yellow-400 shadow-[3px_3px_0_0_#000] transition-all">
+            <span class="mr-2 inline-flex items-center"><img src="/star.svg" alt="Star" class="h-5 w-5 mr-1.5" /></span>
+            Star on GitHub
+          </a>
+          <a href="https://buymeacoffee.com/rahulchaube"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="flex justify-center items-center font-medium text-lg md:text-xl rounded-xl py-2.5 px-6 bg-amber-400 border-2 border-black hover:bg-amber-300 shadow-[3px_3px_0_0_#000] transition-all">
+            ☕ Sponsor Project
+          </a>
+          <a href="/docs/installation"
+             class="bg-black justify-center text-white flex items-center font-medium text-lg md:text-xl border-2 border-black rounded-xl py-2.5 px-6 hover:bg-gray-800 shadow-[3px_3px_0_0_#000] transition-all">
+            Get Started
+          </a>
+        </div>
+      </div>
+      <img src="/thumbs.svg" alt="Thumbs Up" class="hidden lg:block h-36 ml-16" />
+    </div>
+  </Container>
+</div>
