@@ -12,7 +12,7 @@ popover, in any order, with no overlay and nothing blocked, so the page stays
 interactive.
 
 They ship as their own entry with a self-contained stylesheet, so tour-only
-users never load them and you don't need `driver.css` unless you also use tours:
+users never load them and you don't need `spotlight.css` unless you also use tours:
 
 ```js
 import { hints } from "spotlight.js/hints";
@@ -187,7 +187,7 @@ const hint = {
 
 ### Beacon color and size
 
-Beacons read two CSS variables. Set them globally on `.driver-hint`, or give
+Beacons read two CSS variables. Set them globally on `.spotlight-hint`, or give
 individual beacons a `className` and scope the variables to it:
 
 <HintsSample
@@ -218,14 +218,14 @@ individual beacons a `className` and scope the variables to it:
 
 ```css
 /* All beacons */
-.driver-hint {
-  --driver-hint-color: #e11d48;
-  --driver-hint-size: 28px;
+.spotlight-hint {
+  --spotlight-hint-color: #e11d48;
+  --spotlight-hint-size: 28px;
 }
 
 /* Only beacons carrying a class */
 .my-special-hint {
-  --driver-hint-color: #059669;
+  --spotlight-hint-color: #059669;
 }
 ```
 
@@ -326,7 +326,7 @@ the same theme used across these docs:
 
 <HintsSample
   idPrefix="themed"
-  config={{ popoverClass: "driverjs-theme" }}
+  config={{ popoverClass: "spotlight-theme" }}
   hints={[
     {
       element: "#themed-export",
@@ -342,7 +342,7 @@ the same theme used across these docs:
 
 ```js
 const productHints = hints({
-  popoverClass: "driverjs-theme",
+  popoverClass: "spotlight-theme",
   hints: [...],
 });
 ```

@@ -16,7 +16,7 @@ Example below shows how to highlight an element and simply show a popover.
   id={"highlight-me"}
   buttonText={"Highlight Me"}
   config={{
-    popoverClass: "driverjs-theme",
+    popoverClass: "spotlight-theme",
     stagePadding: 4,
   }}
   highlight={{
@@ -34,7 +34,7 @@ Here is the code for above example:
 
 ```js
 const tour = spotlight({
-  popoverClass: "driverjs-theme",
+  popoverClass: "spotlight-theme",
   stagePadding: 4,
 });
 
@@ -90,7 +90,7 @@ Here is the code for the above example.
 
 ```js
 const tour = spotlight({
-  popoverClass: "driverjs-theme",
+  popoverClass: "spotlight-theme",
   stagePadding: 0,
   onDestroyed: () => {
     document?.activeElement?.blur();

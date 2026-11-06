@@ -38,7 +38,7 @@ type Config = {
   smoothScroll?: boolean;
   // Whether to allow closing the popover by clicking on the backdrop. (default: true)
   allowClose?: boolean;
-  // Whether to allow scrolling the page while the driver is active.
+  // Whether to allow scrolling the page while the spotlight is active.
   // Set to false to lock body scrolling for the duration of the tour. (default: true)
   allowScroll?: boolean;
   // Opacity of the backdrop. (default: 0.5)
@@ -132,8 +132,8 @@ type Config = {
   //   - element: The target DOM element of the step
   //   - step: The step object configured for the step
   //   - options.config: The current configuration options
-  //   - options.state: The current state of the driver
-  //   - options.driver: Current driver object
+  //   - options.state: The current state of Spotlight
+  //   - options.driver: Current spotlight instance
   //   - options.index: Index of the currently active step
   onHighlightStarted?: (
     element?: Element,
@@ -151,21 +151,21 @@ type Config = {
     options: { config: Config; state: State; driver: Spotlight; index: number | undefined; reason?: DestroyReason }
   ) => void;
 
-  // Hooks to run before and after the driver
+  // Hooks to run before and after Spotlight
   // is destroyed. Each hook receives
   // the following parameters:
   //   - element: Currently active element
   //   - step: The step object configured for the currently active
   //   - options.config: The current configuration options
-  //   - options.state: The current state of the driver
-  //   - options.driver: Current driver object
+  //   - options.state: The current state of Spotlight
+  //   - options.driver: Current spotlight instance
   //   - options.index: Index of the currently active step
   //   - options.reason: Why the tour is ending
   //       "done"     moved past the last step
   //       "close"    the close button
   //       "escape"   the escape key
   //       "overlay"  a click on the overlay
-  //       "replaced" another driver instance started
+  //       "replaced" another spotlight instance started
   //       "api"      destroy() or navigation from your own code
   //     A destroy() you call from a hook (e.g. confirming in
   //     onDestroyStarted) keeps the reason of the action that
@@ -186,8 +186,8 @@ type Config = {
   //   - element: The current DOM element of the step
   //   - step: The step object configured for the step
   //   - options.config: The current configuration options
-  //   - options.state: The current state of the driver
-  //   - options.driver: Current driver object
+  //   - options.state: The current state of Spotlight
+  //   - options.driver: Current spotlight instance
   //   - options.index: Index of the currently active step
   onNextClick?: (
     element?: Element,
@@ -215,17 +215,17 @@ type Config = {
 };
 ```
 
-> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of the driver. This means that user won't be able to navigate using the buttons and you will have to either call `tour.moveNext()` or `tour.movePrevious()` to navigate to the next/previous step.
+> **Note**: By overriding `onNextClick`, and `onPrevClick` hooks you control the navigation of Spotlight. This means that user won't be able to navigate using the buttons and you will have to either call `tour.moveNext()` or `tour.movePrevious()` to navigate to the next/previous step.
 >
 > You can use this to implement custom logic for navigating between steps. This is also useful when you are dealing with dynamic content and want to highlight the next/previous element based on some logic.
 >
-> `onNextClick` and `onPrevClick` hooks can be configured at the step level as well. When configured at the driver level, you control the navigation for all the steps. When configured at the step level, you control the navigation for that particular step only.
+> `onNextClick` and `onPrevClick` hooks can be configured at the step level as well. When configured at the spotlight level, you control the navigation for all the steps. When configured at the step level, you control the navigation for that particular step only.
 >
-> `onDoneClick` lets you detect when the user finishes the tour by clicking the done button on the last step. When provided, it runs instead of `onNextClick` on the last step, and Spotlight.js won't destroy the tour automatically; you control teardown by calling `tour.destroy()` yourself. Like the other click hooks, it can be configured at the driver or step level.
+> `onDoneClick` lets you detect when the user finishes the tour by clicking the done button on the last step. When provided, it runs instead of `onNextClick` on the last step, and Spotlight.js won't destroy the tour automatically; you control teardown by calling `tour.destroy()` yourself. Like the other click hooks, it can be configured at Spotlight or step level.
 
 > `options.index`: Every hook receives the zero-based index of the currently active step in `options.index` (equivalent to `tour.getActiveIndex()`), or `undefined` when driving a single highlight rather than a `steps` array. Note that `index` always reflects the _active_ step, so inside `onDeselected` (which fires for the step being left during a transition) it points at the step being moved to, not the one being deselected.
 
-> `options.reason`: `onDestroyStarted`, `onDestroyed` and the `onDeselected` that runs when the tour ends receive why it ended: `"done"` (moved past the last step, including when the remaining steps are skipped as missing), `"close"`, `"escape"`, `"overlay"`, `"replaced"` (another driver instance started) or `"api"` (`destroy()`, or a `moveTo()` / `movePrevious()` that left the steps, from your own code). It is not set on the other hooks, or on the `onDeselected` that runs between steps. A `destroy()` you call from a hook (`onDestroyStarted`, `onCloseClick`, `onNextClick` / `onDoneClick` on the last step, an `overlayClickBehavior` function) keeps the reason of the user action that started it. This hook only asks when the user leaves early:
+> `options.reason`: `onDestroyStarted`, `onDestroyed` and the `onDeselected` that runs when the tour ends receive why it ended: `"done"` (moved past the last step, including when the remaining steps are skipped as missing), `"close"`, `"escape"`, `"overlay"`, `"replaced"` (another spotlight instance started) or `"api"` (`destroy()`, or a `moveTo()` / `movePrevious()` that left the steps, from your own code). It is not set on the other hooks, or on the `onDeselected` that runs between steps. A `destroy()` you call from a hook (`onDestroyStarted`, `onCloseClick`, `onNextClick` / `onDoneClick` on the last step, an `overlayClickBehavior` function) keeps the reason of the user action that started it. This hook only asks when the user leaves early:
 >
 > ```js
 > onDestroyStarted: (el, step, { reason }) => {
@@ -309,8 +309,8 @@ type Popover = {
   //   - element: The current DOM element of the step
   //   - step: The step object configured for the step
   //   - options.config: The current configuration options
-  //   - options.state: The current state of the driver
-  //   - options.driver: Current driver object
+  //   - options.state: The current state of Spotlight
+  //   - options.driver: Current spotlight instance
   //   - options.index: Index of the currently active step
   onNextClick?: (
     element?: Element,
@@ -358,15 +358,15 @@ type DriveStep = {
   disableActiveInteraction?: boolean;
 
   // Advance the tour when this step's highlighted element is clicked.
-  // Overrides the driver-level option for this step. (default: false)
+  // Overrides the spotlight-level option for this step. (default: false)
   advanceOnClick?: boolean;
 
   // Skip this step when its target element is specified but missing from the
-  // DOM. Overrides the driver-level option for this step. (default: false)
+  // DOM. Overrides the spotlight-level option for this step. (default: false)
   skipMissingElement?: boolean;
 
   // Wait up to this many milliseconds for this step's element to appear before
-  // treating it as missing. Overrides the driver-level option. (default: 0, off)
+  // treating it as missing. Overrides the spotlight-level option. (default: 0, off)
   waitForElement?: number;
 
   // Arbitrary data that you can pass to the step in order to support complex custom logic in hooks.
@@ -378,8 +378,8 @@ type DriveStep = {
   //   - element: The current DOM element of the step
   //   - step: The step object configured for the step
   //   - options.config: The current configuration options
-  //   - options.state: The current state of the driver
-  //   - options.driver: Current driver object
+  //   - options.state: The current state of Spotlight
+  //   - options.driver: Current spotlight instance
   //   - options.index: Index of the currently active step
   //   - options.reason: Why the tour ended, only on the
   //     onDeselected that runs on destroy (see Spotlight Configuration)
@@ -487,7 +487,7 @@ type DriverHint = {
     // motion. (default: true)
     animate?: boolean;
     // Custom class for the beacon, e.g. to scope the
-    // --driver-hint-size and --driver-hint-color
+    // --spotlight-hint-size and --spotlight-hint-color
     // CSS variables to it.
     className?: string;
   };
@@ -623,8 +623,8 @@ type ChecklistItem = {
   title: string;
   description?: string;
 
-  // A tour to run: steps, a driver configuration or a
-  // driver() instance. The item is ticked when the user
+  // A tour to run: steps, a spotlight configuration or a
+  // spotlight() instance. The item is ticked when the user
   // finishes the tour, not when they close it early.
   tour?: DriveStep[] | Config | Spotlight;
 
@@ -649,11 +649,11 @@ type ChecklistItem = {
 
 ## State
 
-You can access the current state of the driver by calling the `getState` method. It's also passed to the hooks and callbacks.
+You can access the current state of Spotlight by calling the `getState` method. It's also passed to the hooks and callbacks.
 
 ```typescript
 type State = {
-  // Whether the driver is currently active or not
+  // Whether Spotlight is currently active or not
   isInitialized?: boolean;
 
   // Index of the currently active step if using

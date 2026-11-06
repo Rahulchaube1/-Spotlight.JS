@@ -1,15 +1,15 @@
-.driver-checklist.checklist-cards {
-  --driver-checklist-color: #16a34a;
+.spotlight-checklist.checklist-cards {
+  --spotlight-checklist-color: #16a34a;
 }
 
-.driver-checklist.checklist-cards .driver-checklist-items {
+.spotlight-checklist.checklist-cards .spotlight-checklist-items {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 4px 14px 14px;
 }
 
-.driver-checklist.checklist-cards .driver-checklist-item {
+.spotlight-checklist.checklist-cards .spotlight-checklist-item {
   align-items: center;
   padding: 12px;
   border: 1px solid #e5e5e5;
@@ -17,8 +17,8 @@
 }
 
 /* A chevron on items that do something when clicked. */
-.driver-checklist.checklist-cards
-  .driver-checklist-item:has(button.driver-checklist-item-trigger, a.driver-checklist-item-trigger)::after {
+.spotlight-checklist.checklist-cards
+  .spotlight-checklist-item:has(button.spotlight-checklist-item-trigger, a.spotlight-checklist-item-trigger)::after {
   content: "";
   flex-shrink: 0;
   width: 7px;
@@ -29,22 +29,22 @@
   transform: rotate(45deg);
 }
 
-.driver-checklist.checklist-cards
-  .driver-checklist-item:has(
-    button.driver-checklist-item-trigger:hover,
-    a.driver-checklist-item-trigger:hover,
-    button.driver-checklist-check + div.driver-checklist-item-trigger:hover,
-    .driver-checklist-item-trigger:focus-visible
+.spotlight-checklist.checklist-cards
+  .spotlight-checklist-item:has(
+    button.spotlight-checklist-item-trigger:hover,
+    a.spotlight-checklist-item-trigger:hover,
+    button.spotlight-checklist-check + div.spotlight-checklist-item-trigger:hover,
+    .spotlight-checklist-item-trigger:focus-visible
   ) {
   border-color: #d4d4d4;
   background-color: #fafafa;
 }
 
-.driver-checklist.checklist-cards .driver-checklist-item-done {
+.spotlight-checklist.checklist-cards .spotlight-checklist-item-done {
   border-color: #bbf7d0;
   background-color: #f0fdf4;
 }
 
-.driver-checklist.checklist-cards .driver-checklist-item-done .driver-checklist-item-title {
+.spotlight-checklist.checklist-cards .spotlight-checklist-item-done .spotlight-checklist-item-title {
   text-decoration: none;
 }

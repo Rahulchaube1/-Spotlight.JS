@@ -1,18 +1,18 @@
 /* The checklist widget only. Tours started from an item use the tour's own
    styles, so pages with a checklist import driver.css as well. */
 
-.driver-checklist {
+.spotlight-checklist, .driver-checklist {
   /* Distance from the screen edges, set with the offset option or these
      variables; phones get a tighter default below. */
-  --driver-checklist-x: var(--driver-checklist-offset-x, 20px);
-  --driver-checklist-y: var(--driver-checklist-offset-y, 20px);
+  --spotlight-checklist-x: var(--spotlight-checklist-offset-x, 20px);
+  --spotlight-checklist-y: var(--spotlight-checklist-offset-y, 20px);
 
   position: fixed;
   z-index: 999999990;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: calc(100vw - 2 * var(--driver-checklist-x));
+  max-width: calc(100vw - 2 * var(--spotlight-checklist-x));
   box-sizing: border-box;
   font-family: var(
     --driver-popover-font-family,
@@ -27,60 +27,60 @@
   color: #2d2d2d;
 }
 
-.driver-checklist *,
-.driver-checklist *::before,
-.driver-checklist *::after {
+.spotlight-checklist, .driver-checklist *,
+.spotlight-checklist, .driver-checklist *::before,
+.spotlight-checklist, .driver-checklist *::after {
   box-sizing: border-box;
 }
 
 /* Clear of the notch and the home bar on phones that have them. */
-.driver-checklist-bottom-right,
-.driver-checklist-bottom-left {
-  bottom: calc(var(--driver-checklist-y) + env(safe-area-inset-bottom, 0px));
+.spotlight-checklist, .driver-checklist-bottom-right,
+.spotlight-checklist, .driver-checklist-bottom-left {
+  bottom: calc(var(--spotlight-checklist-y) + env(safe-area-inset-bottom, 0px));
 }
 
-.driver-checklist-top-right,
-.driver-checklist-top-left {
-  top: calc(var(--driver-checklist-y) + env(safe-area-inset-top, 0px));
+.spotlight-checklist, .driver-checklist-top-right,
+.spotlight-checklist, .driver-checklist-top-left {
+  top: calc(var(--spotlight-checklist-y) + env(safe-area-inset-top, 0px));
   /* The panel opens below the launcher instead of above it. */
   flex-direction: column-reverse;
 }
 
-.driver-checklist-bottom-right,
-.driver-checklist-top-right {
-  right: calc(var(--driver-checklist-x) + env(safe-area-inset-right, 0px));
+.spotlight-checklist, .driver-checklist-bottom-right,
+.spotlight-checklist, .driver-checklist-top-right {
+  right: calc(var(--spotlight-checklist-x) + env(safe-area-inset-right, 0px));
   align-items: flex-end;
 }
 
-.driver-checklist-bottom-left,
-.driver-checklist-top-left {
-  left: calc(var(--driver-checklist-x) + env(safe-area-inset-left, 0px));
+.spotlight-checklist, .driver-checklist-bottom-left,
+.spotlight-checklist, .driver-checklist-top-left {
+  left: calc(var(--spotlight-checklist-x) + env(safe-area-inset-left, 0px));
   align-items: flex-start;
 }
 
 /* On phones the panel spans the screen with even margins, and the launcher
    stays in its corner. */
 @media (max-width: 480px) {
-  .driver-checklist {
-    --driver-checklist-x: var(--driver-checklist-offset-x, 12px);
-    --driver-checklist-y: var(--driver-checklist-offset-y, 12px);
+  .spotlight-checklist, .driver-checklist {
+    --spotlight-checklist-x: var(--spotlight-checklist-offset-x, 12px);
+    --spotlight-checklist-y: var(--spotlight-checklist-offset-y, 12px);
 
-    left: calc(var(--driver-checklist-x) + env(safe-area-inset-left, 0px));
-    right: calc(var(--driver-checklist-x) + env(safe-area-inset-right, 0px));
+    left: calc(var(--spotlight-checklist-x) + env(safe-area-inset-left, 0px));
+    right: calc(var(--spotlight-checklist-x) + env(safe-area-inset-right, 0px));
     max-width: none;
   }
 
-  .driver-checklist .driver-checklist-panel {
+  .spotlight-checklist, .driver-checklist .spotlight-checklist, .driver-checklist-panel {
     width: 100%;
   }
 }
 
 /* The tour takes over the screen; the checklist waits until it ends. */
-.driver-active .driver-checklist {
+.driver-active .spotlight-checklist, .driver-checklist {
   display: none;
 }
 
-.driver-checklist-launcher {
+.spotlight-checklist, .driver-checklist-launcher {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -99,31 +99,31 @@
   max-width: 100%;
 }
 
-.driver-checklist-launcher:hover {
+.spotlight-checklist, .driver-checklist-launcher:hover {
   background-color: #000;
 }
 
-.driver-checklist-launcher-text {
+.spotlight-checklist, .driver-checklist-launcher-text {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.driver-checklist-launcher-count {
+.spotlight-checklist, .driver-checklist-launcher-count {
   flex-shrink: 0;
   font-size: 13px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
 }
 
-.driver-checklist-panel {
+.spotlight-checklist, .driver-checklist-panel {
   width: 320px;
   max-width: 100%;
   /* Leaves room for the launcher and the gaps; dvh follows the visible
      area as mobile browser toolbars show and hide. */
-  max-height: min(520px, calc(100vh - 2 * var(--driver-checklist-y) - 60px));
-  max-height: min(520px, calc(100dvh - 2 * var(--driver-checklist-y) - 60px));
+  max-height: min(520px, calc(100vh - 2 * var(--spotlight-checklist-y) - 60px));
+  max-height: min(520px, calc(100dvh - 2 * var(--spotlight-checklist-y) - 60px));
   overflow-y: auto;
   border-radius: 10px;
   background-color: #fff;
@@ -133,14 +133,14 @@
 }
 
 /* No launcher to leave room for. */
-.driver-checklist-no-launcher .driver-checklist-panel {
-  max-height: min(520px, calc(100vh - 2 * var(--driver-checklist-y)));
-  max-height: min(520px, calc(100dvh - 2 * var(--driver-checklist-y)));
+.spotlight-checklist, .driver-checklist-no-launcher .spotlight-checklist, .driver-checklist-panel {
+  max-height: min(520px, calc(100vh - 2 * var(--spotlight-checklist-y)));
+  max-height: min(520px, calc(100dvh - 2 * var(--spotlight-checklist-y)));
 }
 
-.driver-checklist-panel[hidden],
-.driver-checklist-description[hidden],
-.driver-checklist-launcher-count[hidden] {
+.spotlight-checklist, .driver-checklist-panel[hidden],
+.spotlight-checklist, .driver-checklist-description[hidden],
+.spotlight-checklist, .driver-checklist-launcher-count[hidden] {
   display: none;
 }
 
@@ -152,8 +152,8 @@
 }
 
 /* Below the launcher in the top corners, so it slides down instead. */
-.driver-checklist-top-right .driver-checklist-panel,
-.driver-checklist-top-left .driver-checklist-panel {
+.spotlight-checklist, .driver-checklist-top-right .spotlight-checklist, .driver-checklist-panel,
+.spotlight-checklist, .driver-checklist-top-left .spotlight-checklist, .driver-checklist-panel {
   animation-name: driver-checklist-in-down;
 }
 
@@ -165,31 +165,31 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .driver-checklist-panel {
+  .spotlight-checklist, .driver-checklist-panel {
     animation: none;
   }
 }
 
 /* Header type and the close button mirror the tour popover. */
-.driver-checklist-header {
+.spotlight-checklist, .driver-checklist-header {
   position: relative;
   padding: 15px 15px 12px;
 }
 
-.driver-checklist-title {
+.spotlight-checklist, .driver-checklist-title {
   margin: 0 20px 0 0;
   font-size: 17px;
   font-weight: 500;
   line-height: 1.5;
 }
 
-.driver-checklist-description {
+.spotlight-checklist, .driver-checklist-description {
   margin-top: 5px;
   font-size: 14px;
   line-height: 1.5;
 }
 
-.driver-checklist-close-btn {
+.spotlight-checklist, .driver-checklist-close-btn {
   all: unset;
   position: absolute;
   top: 0;
@@ -204,19 +204,19 @@
   transition: color 200ms;
 }
 
-.driver-checklist-close-btn:hover,
-.driver-checklist-close-btn:focus-visible {
+.spotlight-checklist, .driver-checklist-close-btn:hover,
+.spotlight-checklist, .driver-checklist-close-btn:focus-visible {
   color: #2d2d2d;
 }
 
-.driver-checklist-progress {
+.spotlight-checklist, .driver-checklist-progress {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 12px;
 }
 
-.driver-checklist-progress-bar {
+.spotlight-checklist, .driver-checklist-progress-bar {
   flex: 1;
   height: 4px;
   border-radius: 2px;
@@ -224,27 +224,27 @@
   overflow: hidden;
 }
 
-.driver-checklist-progress-fill {
+.spotlight-checklist, .driver-checklist-progress-fill {
   height: 100%;
   border-radius: inherit;
-  background-color: var(--driver-checklist-color, #2d2d2d);
+  background-color: var(--spotlight-checklist-color, #2d2d2d);
   transition: width 300ms ease-out;
 }
 
-.driver-checklist-progress-text {
+.spotlight-checklist, .driver-checklist-progress-text {
   order: 1;
   flex-shrink: 0;
   font-size: 13px;
   color: #727272;
 }
 
-.driver-checklist-items {
+.spotlight-checklist, .driver-checklist-items {
   list-style: none;
   margin: 0;
   padding: 0 7px 7px;
 }
 
-.driver-checklist-item {
+.spotlight-checklist, .driver-checklist-item {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -252,21 +252,21 @@
   border-radius: 6px;
 }
 
-.driver-checklist-item:has(
-  button.driver-checklist-item-trigger:hover,
-  a.driver-checklist-item-trigger:hover,
-  button.driver-checklist-check + div.driver-checklist-item-trigger:hover,
-  .driver-checklist-item-trigger:focus-visible
+.spotlight-checklist, .driver-checklist-item:has(
+  button.spotlight-checklist, .driver-checklist-item-trigger:hover,
+  a.spotlight-checklist, .driver-checklist-item-trigger:hover,
+  button.spotlight-checklist, .driver-checklist-check + div.spotlight-checklist, .driver-checklist-item-trigger:hover,
+  .spotlight-checklist, .driver-checklist-item-trigger:focus-visible
 ) {
   background-color: #f7f7f7;
 }
 
 /* A focused item is marked by its row's background above, not a ring. */
-.driver-checklist-item-trigger:focus-visible {
+.spotlight-checklist, .driver-checklist-item-trigger:focus-visible {
   outline: none;
 }
 
-.driver-checklist-item-trigger {
+.spotlight-checklist, .driver-checklist-item-trigger {
   all: unset;
   box-sizing: border-box;
   display: flex;
@@ -279,19 +279,19 @@
   text-decoration: none;
 }
 
-button.driver-checklist-item-trigger,
-a.driver-checklist-item-trigger,
-button.driver-checklist-check + div.driver-checklist-item-trigger {
+button.spotlight-checklist, .driver-checklist-item-trigger,
+a.spotlight-checklist, .driver-checklist-item-trigger,
+button.spotlight-checklist, .driver-checklist-check + div.spotlight-checklist, .driver-checklist-item-trigger {
   cursor: pointer;
 }
 
-.driver-checklist-launcher:focus-visible,
-.driver-checklist-check:focus-visible {
-  outline: 2px solid var(--driver-checklist-color, #2d2d2d);
+.spotlight-checklist, .driver-checklist-launcher:focus-visible,
+.spotlight-checklist, .driver-checklist-check:focus-visible {
+  outline: 2px solid var(--spotlight-checklist-color, #2d2d2d);
   outline-offset: 2px;
 }
 
-.driver-checklist-check {
+.spotlight-checklist, .driver-checklist-check {
   all: unset;
   box-sizing: border-box;
   position: relative;
@@ -303,48 +303,48 @@ button.driver-checklist-check + div.driver-checklist-item-trigger {
   border-radius: 50%;
 }
 
-button.driver-checklist-check,
-.driver-checklist-item:has(button.driver-checklist-item-trigger, a.driver-checklist-item-trigger)
-  .driver-checklist-check {
+button.spotlight-checklist, .driver-checklist-check,
+.spotlight-checklist, .driver-checklist-item:has(button.spotlight-checklist, .driver-checklist-item-trigger, a.spotlight-checklist, .driver-checklist-item-trigger)
+  .spotlight-checklist, .driver-checklist-check {
   cursor: pointer;
 }
 
 /* A bigger tap target than the 16px circle, for fingers. */
-button.driver-checklist-check::before {
+button.spotlight-checklist, .driver-checklist-check::before {
   content: "";
   position: absolute;
   inset: -9px;
 }
 
-button.driver-checklist-check:hover {
+button.spotlight-checklist, .driver-checklist-check:hover {
   border-color: #2d2d2d;
 }
 
-.driver-checklist-item-done .driver-checklist-check {
-  border-color: var(--driver-checklist-color, #2d2d2d);
-  background: var(--driver-checklist-color, #2d2d2d)
+.spotlight-checklist, .driver-checklist-item-done .spotlight-checklist, .driver-checklist-check {
+  border-color: var(--spotlight-checklist-color, #2d2d2d);
+  background: var(--spotlight-checklist-color, #2d2d2d)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.5l4.5-5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
     center / 10px no-repeat;
 }
 
-.driver-checklist-item-title {
+.spotlight-checklist, .driver-checklist-item-title {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
 }
 
-.driver-checklist-item-done .driver-checklist-item-title {
+.spotlight-checklist, .driver-checklist-item-done .spotlight-checklist, .driver-checklist-item-title {
   color: #727272;
   text-decoration: line-through;
 }
 
-.driver-checklist-item-description {
+.spotlight-checklist, .driver-checklist-item-description {
   font-size: 13px;
   line-height: 1.45;
   color: #727272;
 }
 
-.driver-checklist-sr-only {
+.spotlight-checklist, .driver-checklist-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;

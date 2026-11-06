@@ -1,58 +1,58 @@
-.driver-checklist.checklist-gradient {
-  --driver-checklist-color: #7c3aed;
+.spotlight-checklist.checklist-gradient {
+  --spotlight-checklist-color: #7c3aed;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-launcher {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-launcher {
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #7c3aed, #db2777);
   box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-launcher-count {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-launcher-count {
   padding: 2px 8px;
   border-radius: 999px;
   background-color: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-panel {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-panel {
   border: none;
   border-radius: 16px;
   box-shadow: 0 12px 32px rgba(76, 29, 149, 0.2);
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-header {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-header {
   padding: 18px 18px 16px;
   background: linear-gradient(135deg, #7c3aed, #db2777);
   color: #fff;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-title {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-title {
   font-weight: 700;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-description,
-.driver-checklist.checklist-gradient .driver-checklist-progress-text {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-description,
+.spotlight-checklist.checklist-gradient .spotlight-checklist-progress-text {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-close-btn {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-close-btn {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-close-btn:hover {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-close-btn:hover {
   color: #fff;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-progress-bar {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-progress-bar {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-progress-fill {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-progress-fill {
   background-color: #fff;
 }
 
-.driver-checklist.checklist-gradient .driver-checklist-items {
+.spotlight-checklist.checklist-gradient .spotlight-checklist-items {
   padding-top: 8px;
 }

@@ -1,9 +1,9 @@
-/* The theme of the driver.js homepage. */
-.driver-checklist.checklist-brutalist {
-  --driver-checklist-color: #000;
+/* The theme of the Spotlight.js homepage. */
+.spotlight-checklist.checklist-brutalist {
+  --spotlight-checklist-color: #000;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-launcher {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-launcher {
   padding: 10px 16px;
   border: 2px solid #000;
   border-radius: 12px;
@@ -12,68 +12,68 @@
   box-shadow: 3px 3px 0 0 #000;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-launcher:hover {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-launcher:hover {
   background-color: #facc15;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-launcher:active {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-launcher:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 0 #000;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-launcher-count {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-launcher-count {
   padding: 2px 7px;
   border-radius: 999px;
   background-color: #000;
   color: #fde047;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-panel {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-panel {
   border: 2px solid #000;
   border-radius: 12px;
   box-shadow: 4px 4px 0 0 #000;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-header {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-header {
   border-bottom: 2px solid #000;
   background-color: #fde047;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-title {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-title {
   font-weight: 700;
   color: #000;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-items {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-items {
   padding-top: 7px;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-description,
-.driver-checklist.checklist-brutalist .driver-checklist-progress-text,
-.driver-checklist.checklist-brutalist .driver-checklist-close-btn {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-description,
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-progress-text,
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-close-btn {
   color: rgba(0, 0, 0, 0.7);
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-progress-bar {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-progress-bar {
   height: 10px;
   border: 2px solid #000;
   background-color: #fff;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-progress-fill {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-progress-fill {
   border-radius: 0;
 }
 
-.driver-checklist.checklist-brutalist .driver-checklist-check {
+.spotlight-checklist.checklist-brutalist .spotlight-checklist-check {
   border-color: #000;
 }
 
-.driver-checklist.checklist-brutalist
-  .driver-checklist-item:has(
-    button.driver-checklist-item-trigger:hover,
-    a.driver-checklist-item-trigger:hover,
-    button.driver-checklist-check + div.driver-checklist-item-trigger:hover,
-    .driver-checklist-item-trigger:focus-visible
+.spotlight-checklist.checklist-brutalist
+  .spotlight-checklist-item:has(
+    button.spotlight-checklist-item-trigger:hover,
+    a.spotlight-checklist-item-trigger:hover,
+    button.spotlight-checklist-check + div.spotlight-checklist-item-trigger:hover,
+    .spotlight-checklist-item-trigger:focus-visible
   ) {
   background-color: #fef9c3;
 }

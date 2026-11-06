@@ -1,15 +1,15 @@
 /* The image goes in the description, as HTML. These rules lift it above the
    title as a banner, with the description text below. */
-.driver-checklist.checklist-media .driver-checklist-header {
+.spotlight-checklist.checklist-media .spotlight-checklist-header {
   display: flex;
   flex-direction: column;
 }
 
-.driver-checklist.checklist-media .driver-checklist-description {
+.spotlight-checklist.checklist-media .spotlight-checklist-description {
   display: contents;
 }
 
-.driver-checklist.checklist-media .driver-checklist-description img {
+.spotlight-checklist.checklist-media .spotlight-checklist-description img {
   order: -1;
   display: block;
   width: 100%;
@@ -20,13 +20,13 @@
   object-fit: cover;
 }
 
-.driver-checklist.checklist-media .driver-checklist-description p {
+.spotlight-checklist.checklist-media .spotlight-checklist-description p {
   margin: 4px 0 0;
   font-size: 14px;
   line-height: 1.5;
 }
 
-.driver-checklist.checklist-media .driver-checklist-close-btn {
+.spotlight-checklist.checklist-media .spotlight-checklist-close-btn {
   top: 22px;
   right: 22px;
   width: 26px;

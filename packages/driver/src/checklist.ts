@@ -193,7 +193,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     const isManual = item.allowManualComplete ?? currentConfig.allowManualComplete;
     if (!isManual) {
       const check = document.createElement("span");
-      check.className = "driver-checklist-check";
+      check.className = "spotlight-checklist-check driver-checklist-check";
       check.setAttribute("aria-hidden", "true");
 
       return check;
@@ -201,7 +201,7 @@ export function checklist(config: ChecklistConfig): Checklist {
 
     const check = document.createElement("button");
     check.type = "button";
-    check.className = "driver-checklist-check";
+    check.className = "spotlight-checklist-check driver-checklist-check";
     check.setAttribute("aria-label", `Mark "${item.title.replace(/<[^>]*>/g, "")}" as done`);
     check.addEventListener("click", () => {
       if (completed.has(item.id)) {
@@ -219,7 +219,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     const isInteractive = !!(item.tour || item.href || item.action);
 
     const trigger = document.createElement(isLink ? "a" : isInteractive ? "button" : "div");
-    trigger.className = "driver-checklist-item-trigger";
+    trigger.className = "spotlight-checklist-item-trigger driver-checklist-item-trigger";
     trigger.dataset.itemId = item.id;
 
     if (trigger instanceof HTMLAnchorElement) {
@@ -240,20 +240,20 @@ export function checklist(config: ChecklistConfig): Checklist {
     }
 
     const title = document.createElement("span");
-    title.className = "driver-checklist-item-title";
+    title.className = "spotlight-checklist-item-title driver-checklist-item-title";
     title.innerHTML = item.title;
     trigger.appendChild(title);
 
     if (item.description) {
       const description = document.createElement("span");
-      description.className = "driver-checklist-item-description";
+      description.className = "spotlight-checklist-item-description driver-checklist-item-description";
       description.innerHTML = item.description;
       trigger.appendChild(description);
     }
 
     // Filled in by render() once the item is done, for screen readers.
     const status = document.createElement("span");
-    status.className = "driver-checklist-sr-only";
+    status.className = "spotlight-checklist-sr-only driver-checklist-sr-only";
     trigger.appendChild(status);
 
     // A plain check circle is part of the row's click target, like the text.
@@ -266,7 +266,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     }
 
     const entry = document.createElement("li");
-    entry.className = "driver-checklist-item";
+    entry.className = "spotlight-checklist-item driver-checklist-item";
     entry.appendChild(check);
     entry.appendChild(trigger);
 
@@ -283,7 +283,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     // Updated in place rather than rebuilt, so focus and hover survive.
     Array.from(dom.list.children).forEach((entry, index) => {
       const isDone = completed.has(items()[index].id);
-      entry.classList.toggle("driver-checklist-item-done", isDone);
+      entry.classList.toggle("spotlight-checklist-item-done", isDone); entry.classList.toggle("driver-checklist-item-done", isDone);
       entry.querySelector(".driver-checklist-sr-only")!.textContent = isDone ? " (done)" : "";
       entry.querySelector("button.driver-checklist-check")?.setAttribute("aria-pressed", `${isDone}`);
     });
@@ -300,10 +300,10 @@ export function checklist(config: ChecklistConfig): Checklist {
     dom.progressText.textContent = format(currentConfig.progressText || "{{done}} of {{total}}");
     dom.progressFill.style.width = `${percent}%`;
     // For progress designs drawn in CSS, such as a ring around the count.
-    dom.root.style.setProperty("--driver-checklist-progress", `${percent}%`);
+    dom.root.style.setProperty("--spotlight-checklist-progress", `${percent}%`); dom.root.style.setProperty("--driver-checklist-progress", `${percent}%`);
     dom.launcherCount.textContent = format(launcherProgressText);
     dom.launcherCount.hidden = !launcherProgressText;
-    dom.root.classList.toggle("driver-checklist-complete", isAllDone());
+    dom.root.classList.toggle("spotlight-checklist-complete", isAllDone()); dom.root.classList.toggle("driver-checklist-complete", isAllDone());
 
     renderTexts();
     syncLauncherTitle();
@@ -355,7 +355,7 @@ export function checklist(config: ChecklistConfig): Checklist {
 
   function createDOM(): ChecklistDOM {
     const root = document.createElement("div");
-    root.className = `driver-checklist driver-checklist-${currentConfig.position || "bottom-right"} ${
+    root.className = `spotlight-checklist driver-checklist spotlight-checklist-${currentConfig.position || "bottom-right"} driver-checklist-${currentConfig.position || "bottom-right"} ${
       currentConfig.className || ""
     }`.trim();
 
@@ -370,21 +370,21 @@ export function checklist(config: ChecklistConfig): Checklist {
     const panelId = `driver-checklist-${currentConfig.id}`;
 
     const panel = document.createElement("div");
-    panel.className = "driver-checklist-panel";
+    panel.className = "spotlight-checklist-panel driver-checklist-panel";
     panel.id = panelId;
     panel.hidden = true;
     panel.setAttribute("role", "dialog");
 
     const header = document.createElement("div");
-    header.className = "driver-checklist-header";
+    header.className = "spotlight-checklist-header driver-checklist-header";
 
     const title = document.createElement("div");
-    title.className = "driver-checklist-title";
+    title.className = "spotlight-checklist-title driver-checklist-title";
     header.appendChild(title);
 
     const closeButton = document.createElement("button");
     closeButton.type = "button";
-    closeButton.className = "driver-checklist-close-btn";
+    closeButton.className = "spotlight-checklist-close-btn driver-checklist-close-btn";
     closeButton.setAttribute("aria-label", "Close checklist");
     closeButton.innerHTML = "&times;";
     closeButton.addEventListener("click", () => {
@@ -394,20 +394,20 @@ export function checklist(config: ChecklistConfig): Checklist {
     header.appendChild(closeButton);
 
     const description = document.createElement("div");
-    description.className = "driver-checklist-description";
+    description.className = "spotlight-checklist-description driver-checklist-description";
     header.appendChild(description);
 
     const progress = document.createElement("div");
-    progress.className = "driver-checklist-progress";
+    progress.className = "spotlight-checklist-progress driver-checklist-progress";
 
     const progressText = document.createElement("div");
-    progressText.className = "driver-checklist-progress-text";
+    progressText.className = "spotlight-checklist-progress-text driver-checklist-progress-text";
 
     const progressBar = document.createElement("div");
-    progressBar.className = "driver-checklist-progress-bar";
+    progressBar.className = "spotlight-checklist-progress-bar driver-checklist-progress-bar";
 
     const progressFill = document.createElement("div");
-    progressFill.className = "driver-checklist-progress-fill";
+    progressFill.className = "spotlight-checklist-progress-fill driver-checklist-progress-fill";
     progressBar.appendChild(progressFill);
 
     progress.appendChild(progressText);
@@ -415,7 +415,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     header.appendChild(progress);
 
     const list = document.createElement("ul");
-    list.className = "driver-checklist-items";
+    list.className = "spotlight-checklist-items driver-checklist-items";
     items().forEach(item => list.appendChild(createItem(item)));
 
     panel.appendChild(header);
@@ -423,16 +423,16 @@ export function checklist(config: ChecklistConfig): Checklist {
 
     const launcher = document.createElement("button");
     launcher.type = "button";
-    launcher.className = "driver-checklist-launcher";
+    launcher.className = "spotlight-checklist-launcher driver-checklist-launcher";
     launcher.setAttribute("aria-expanded", "false");
     launcher.setAttribute("aria-controls", panelId);
     launcher.addEventListener("click", () => toggle());
 
     const launcherText = document.createElement("span");
-    launcherText.className = "driver-checklist-launcher-text";
+    launcherText.className = "spotlight-checklist-launcher-text driver-checklist-launcher-text";
 
     const launcherCount = document.createElement("span");
-    launcherCount.className = "driver-checklist-launcher-count";
+    launcherCount.className = "spotlight-checklist-launcher-count driver-checklist-launcher-count";
 
     launcher.appendChild(launcherText);
     launcher.appendChild(launcherCount);
@@ -441,7 +441,7 @@ export function checklist(config: ChecklistConfig): Checklist {
     // Without a launcher it is still built, just never attached, so the code
     // syncing its text and state has nothing to special-case.
     if (currentConfig.launcher === false) {
-      root.classList.add("driver-checklist-no-launcher");
+      root.classList.add("spotlight-checklist-no-launcher", "driver-checklist-no-launcher");
     } else {
       root.appendChild(launcher);
     }

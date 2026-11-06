@@ -14,7 +14,7 @@ import { spotlight } from "spotlight.js";
 import "spotlight.js/dist/spotlight.css";
 
 // Look at the configuration section for the options
-// https://Spotlightjs.rahulchaube1.com/docs/configuration#driver-configuration
+// https://Spotlightjs.rahulchaube1.com/docs/configuration#spotlight-configuration
 const tour = spotlight({
   /* ... */
 });
@@ -80,7 +80,7 @@ tour.hideCheatsheet();   // Hide keyboard shortcuts overlay modal
 tour.destroy();
 ```
 
-> Each `driver()` call returns its own independent instance. You can create as many as you need on the same page, and their configuration, steps, and state never overlap. Only one instance can be on screen at a time, so starting a tour or highlight on one instance closes whichever instance is currently active.
+> Each `spotlight()` call returns its own independent instance. You can create as many as you need on the same page, and their configuration, steps, and state never overlap. Only one instance can be on screen at a time, so starting a tour or highlight on one instance closes whichever instance is currently active.
 
 ## Hints
 
@@ -127,7 +127,7 @@ productHints.isVisible(); // Whether the beacons are currently shown
 productHints.refresh();
 ```
 
-> Like `driver()`, each `hints()` call is independent: its hints, dismissals, and overlay never affect another instance or a running tour.
+> Like `spotlight()`, each `hints()` call is independent: its hints, dismissals, and overlay never affect another instance or a running tour.
 
 ## Checklists
 

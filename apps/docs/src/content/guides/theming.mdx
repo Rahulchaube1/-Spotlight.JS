@@ -1,15 +1,15 @@
 ---
 title: "Theming"
-description: "Theme Spotlight.js to match your brand. Apply custom classes and CSS to the popover, buttons, overlay, hints and checklists, or restyle the driver from the ground up."
+description: "Theme Spotlight.js to match your brand. Apply custom classes and CSS to the popover, buttons, overlay, hints and checklists, or restyle Spotlight from the ground up."
 groupTitle: "Introduction"
 sort: 5
 ---
 
-You can customize the look and feel of the driver by adding custom class to popover or applying CSS to different classes used by Spotlight.js.
+You can customize the look and feel of Spotlight by adding custom class to popover or applying CSS to different classes used by Spotlight.js.
 
 ## Styling Popover
 
-You can set the `popoverClass` option globally in the driver configuration or at the step level to apply custom class to the popover and then use CSS to apply styles.
+You can set the `popoverClass` option globally in the spotlight configuration or at the step level to apply custom class to the popover and then use CSS to apply styles.
 
 ```js
 const tour = spotlight({
@@ -17,7 +17,7 @@ const tour = spotlight({
 });
 
 // or you can also have different classes for different steps
-const driverObj2 = spotlight({
+const tour = spotlight({
   steps: [
     {
       element: "#some-element",
@@ -101,11 +101,11 @@ The popover text uses the following font stack by default:
 "Helvetica Neue", Inter, ui-sans-serif, "Apple Color Emoji", Helvetica, Arial, sans-serif;
 ```
 
-To use your own font, override the `--driver-popover-font-family` CSS variable. It's inherited, so you can set it anywhere above the popover (on `:root`, `body`, or a `popoverClass`) and it applies to the title, description, buttons, and progress text at once. [Checklists](/docs/checklists) read the same variable.
+To use your own font, override the `--spotlight-popover-font-family` CSS variable. It's inherited, so you can set it anywhere above the popover (on `:root`, `body`, or a `popoverClass`) and it applies to the title, description, buttons, and progress text at once. [Checklists](/docs/checklists) read the same variable.
 
 ```css
 :root {
-  --driver-popover-font-family: "Inter", sans-serif;
+  --spotlight-popover-font-family: "Inter", sans-serif;
 }
 ```
 
@@ -132,15 +132,15 @@ onPopoverRender?: (popover: PopoverDOM, opts: { config: Config; state: State }) 
 
 ## Styling Page
 
-Following classes are applied to the page when the driver is active.
+Following classes are applied to the page when the spotlight is active.
 
 ```css
-/* Applied to the `body` when the driver: */
+/* Applied to the `body` when Spotlight: */
 .spotlight-active {
 } /* is active */
-.driver-fade {
+.spotlight-fade {
 } /* is animated */
-.driver-simple {
+.spotlight-simple {
 } /* is not animated */
 ```
 
@@ -165,9 +165,9 @@ Whenever an element is highlighted, the following classes are applied to it.
 Hint popovers are regular Spotlight.js popovers, so everything above applies to them unchanged. The beacons read two CSS variables, settable globally or scoped to a class you pass through a hint's `beacon.className`:
 
 ```css
-.driver-hint {
-  --driver-hint-size: 32px;
-  --driver-hint-color: #e11d48;
+.spotlight-hint {
+  --spotlight-hint-size: 32px;
+  --spotlight-hint-color: #e11d48;
 }
 ```
 
@@ -175,7 +175,7 @@ See [Styling Hints](/docs/hints#styling) for live examples, including per-beacon
 
 ## Styling Checklists
 
-The checklist widget has its own stylesheet and classes. Set `--driver-checklist-color` to recolor the progress bar, the ticks and the focus rings, or pass `className` to the checklist and style its parts:
+The checklist widget has its own stylesheet and classes. Set `--spotlight-checklist-color` to recolor the progress bar, the ticks and the focus rings, or pass `className` to the checklist and style its parts:
 
 ```js
 checklist({
@@ -188,34 +188,34 @@ checklist({
 ```css
 /* Accent color, globally or scoped to your class */
 .my-checklist {
-  --driver-checklist-color: #16a34a;
+  --spotlight-checklist-color: #16a34a;
 }
 
 /* The button that opens the panel */
-.my-checklist .driver-checklist-launcher {
+.my-checklist .spotlight-checklist-launcher {
   background-color: #16a34a;
   border-color: #16a34a;
 }
 
 /* The panel, its header and the progress bar */
-.my-checklist .driver-checklist-panel {
+.my-checklist .spotlight-checklist-panel {
   border-radius: 4px;
 }
 
-.my-checklist .driver-checklist-title {
+.my-checklist .spotlight-checklist-title {
   font-size: 20px;
 }
 
-.my-checklist .driver-checklist-progress-bar {
+.my-checklist .spotlight-checklist-progress-bar {
   height: 6px;
 }
 
 /* Items, and items once they are done */
-.my-checklist .driver-checklist-item-title {
+.my-checklist .spotlight-checklist-item-title {
   font-weight: 500;
 }
 
-.my-checklist .driver-checklist-item-done .driver-checklist-item-title {
+.my-checklist .spotlight-checklist-item-done .spotlight-checklist-item-title {
   text-decoration: none;
 }
 ```

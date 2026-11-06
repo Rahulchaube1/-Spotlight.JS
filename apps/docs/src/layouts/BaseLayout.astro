@@ -61,6 +61,8 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
     <slot name="head" />
 
     <style is:global>
+      .spotlight-popover.spotlight-theme,
+      .spotlight-popover.driverjs-theme,
       .driver-popover.driverjs-theme {
         background-color: var(--card, #ffffff);
         color: var(--foreground, #1e293b);
@@ -70,6 +72,8 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
         padding: 18px;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-title,
+      .spotlight-popover.driverjs-theme .driver-popover-title,
       .driver-popover.driverjs-theme .driver-popover-title {
         font-size: 18px;
         font-weight: 700;
@@ -77,18 +81,24 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
         letter-spacing: -0.01em;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-description,
+      .spotlight-popover.driverjs-theme .driver-popover-description,
       .driver-popover.driverjs-theme .driver-popover-description {
         color: var(--muted-foreground, #64748b);
         font-size: 14px;
         line-height: 1.6;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-progress-text,
+      .spotlight-popover.driverjs-theme .driver-popover-progress-text,
       .driver-popover.driverjs-theme .driver-popover-progress-text {
         color: var(--muted-foreground, #64748b);
         font-size: 12px;
         font-weight: 600;
       }
 
+      .spotlight-popover.spotlight-theme button:not(.spotlight-popover-close-btn),
+      .spotlight-popover.driverjs-theme button:not(.driver-popover-close-btn),
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn) {
         flex: 1;
         text-align: center;
@@ -103,25 +113,31 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
         transition: opacity 0.15s ease;
       }
 
+      .spotlight-popover.spotlight-theme button:not(.spotlight-popover-close-btn):focus,
+      .spotlight-popover.spotlight-theme button:not(.spotlight-popover-close-btn):hover,
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn):focus,
       .driver-popover.driverjs-theme button:not(.driver-popover-close-btn):hover {
         opacity: 0.9;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-navigation-btns,
       .driver-popover.driverjs-theme .driver-popover-navigation-btns {
         justify-content: space-between;
         gap: 6px;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-footer,
       .driver-popover.driverjs-theme .driver-popover-footer {
         gap: 12px;
         margin-top: 14px;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-progress-text,
       .driver-popover.driverjs-theme .driver-popover-progress-text {
         white-space: nowrap;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-footer button.spotlight-popover-btn-disabled,
       .driver-popover.driverjs-theme .driver-popover-footer button.driver-popover-btn-disabled {
         background-color: var(--muted, #f1f5f9);
         color: var(--muted-foreground, #94a3b8);
@@ -129,42 +145,52 @@ const canonical = new URL(permalink, Astro.site ?? "https://Spotlightjs.rahulcha
         opacity: 0.7;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-close-btn,
       .driver-popover.driverjs-theme .driver-popover-close-btn {
         color: var(--muted-foreground, #94a3b8);
         transition: color 0.15s ease;
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-close-btn:hover,
       .driver-popover.driverjs-theme .driver-popover-close-btn:hover {
         color: var(--foreground, #1e293b);
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-left.spotlight-popover-arrow,
       .driver-popover.driverjs-theme .driver-popover-arrow-side-left.driver-popover-arrow {
         border-left-color: var(--card, #ffffff);
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-right.spotlight-popover-arrow,
       .driver-popover.driverjs-theme .driver-popover-arrow-side-right.driver-popover-arrow {
         border-right-color: var(--card, #ffffff);
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-top.spotlight-popover-arrow,
       .driver-popover.driverjs-theme .driver-popover-arrow-side-top.driver-popover-arrow {
         border-top-color: var(--card, #ffffff);
       }
 
+      .spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-bottom.spotlight-popover-arrow,
       .driver-popover.driverjs-theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
         border-bottom-color: var(--card, #ffffff);
       }
 
       .docs-checklist-green {
+        --spotlight-checklist-color: #16a34a;
         --driver-checklist-color: #16a34a;
       }
 
       /* Beacon classes used by the samples on the hints examples page. */
       .docs-hint-rose {
+        --spotlight-hint-color: #e11d48;
         --driver-hint-color: #e11d48;
       }
 
       .docs-hint-large {
+        --spotlight-hint-color: #059669;
         --driver-hint-color: #059669;
+        --spotlight-hint-size: 28px;
         --driver-hint-size: 28px;
       }
     </style>

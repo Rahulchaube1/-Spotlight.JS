@@ -12,7 +12,7 @@ Each item is one thing you want new users to do. An item can start a tour, open
 a link or run your own code, and it ticks itself off once the user has done it.
 
 Checklists ship as their own entry. Items that start tours use the tour styles,
-so import `driver.css` as well:
+so import `spotlight.css` as well:
 
 ```js
 import { checklist } from "spotlight.js/checklist";
@@ -73,8 +73,8 @@ What happens when an item is clicked depends on what it has:
 - `tour`: the checklist closes and the tour starts. The item is ticked only
   when the user finishes the tour; closing it early leaves the item open. The
   checklist opens again when the tour ends either way. Pass an array of steps,
-  a full [driver configuration](/docs/configuration#driver-configuration), or
-  a `driver()` instance you created yourself; its own hooks keep working.
+  a full [spotlight configuration](/docs/configuration#spotlight-configuration), or
+  a `spotlight()` instance you created yourself; its own hooks keep working.
 - `href`: rendered as a link. The item is ticked on click and the link
   navigates as usual.
 - `action`: your function runs with `(item, { checklist })` and the item is
@@ -251,17 +251,17 @@ See [Checklist Themes](/docs/checklist-themes) for its CSS and more themes to
 copy: dark, gradient header, a GIF banner, numbered steps, a progress ring and
 more.
 
-The parts are `driver-checklist-launcher`, `-launcher-text`, `-launcher-count`,
+The parts are `spotlight-checklist-launcher`, `-launcher-text`, `-launcher-count`,
 `-panel`, `-header`, `-title`, `-description`, `-close-btn`, `-progress`,
 `-progress-text`, `-progress-bar`, `-progress-fill`, `-items`, `-item`,
 `-item-trigger`, `-item-title`, `-item-description` and `-check`. Done items
-get `driver-checklist-item-done`, and the widget gets
-`driver-checklist-complete` once every item is done. The font comes from the
-popover's `--driver-popover-font-family` variable.
+get `spotlight-checklist-item-done`, and the widget gets
+`spotlight-checklist-complete` once every item is done. The font comes from the
+popover's `--spotlight-popover-font-family` variable.
 
 ### Accent color
 
-To keep the default look in your brand color, set `--driver-checklist-color`.
+To keep the default look in your brand color, set `--spotlight-checklist-color`.
 It colors the progress bar, the ticks and the focus rings:
 
 <ChecklistSample
@@ -273,7 +273,7 @@ It colors the progress bar, the ticks and the focus rings:
 
 ```css
 :root {
-  --driver-checklist-color: #16a34a;
+  --spotlight-checklist-color: #16a34a;
 }
 ```
 
@@ -302,7 +302,7 @@ checklist({
 ```
 
 The default is 20 pixels, or 12 on phones. You can also set it in CSS with the
-`--driver-checklist-offset-x` and `--driver-checklist-offset-y` variables.
+`--spotlight-checklist-offset-x` and `--spotlight-checklist-offset-y` variables.
 
 On screens narrower than 480 pixels, the panel spans the width of the screen
 with even margins, and the launcher stays in its corner. The widget also keeps
@@ -418,7 +418,7 @@ const item = {
   description: "A short walk through the dashboard.",
 
   // What clicking the item does; see Items above.
-  tour: [], // Steps, a driver config or a driver() instance
+  tour: [], // Steps, a driver config or a spotlight() instance
   href: "/settings",
   action: (item, { checklist }) => {},
 

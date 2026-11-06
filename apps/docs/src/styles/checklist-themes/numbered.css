@@ -1,15 +1,15 @@
-.driver-checklist.checklist-numbered .driver-checklist-items {
+.spotlight-checklist.checklist-numbered .spotlight-checklist-items {
   counter-reset: checklist-step;
 }
 
 /* The number sits on the title's baseline, whatever the font. */
-.driver-checklist.checklist-numbered .driver-checklist-item {
+.spotlight-checklist.checklist-numbered .spotlight-checklist-item {
   counter-increment: checklist-step;
   align-items: baseline;
 }
 
 /* The circle shows the step number until the item is done. */
-.driver-checklist.checklist-numbered .driver-checklist-check {
+.spotlight-checklist.checklist-numbered .spotlight-checklist-check {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,15 +22,15 @@
   color: #525252;
 }
 
-.driver-checklist.checklist-numbered .driver-checklist-check::after {
+.spotlight-checklist.checklist-numbered .spotlight-checklist-check::after {
   content: counter(checklist-step);
 }
 
 /* Kept but hidden once done, so the circle still has a baseline to align by. */
-.driver-checklist.checklist-numbered .driver-checklist-item-done .driver-checklist-check::after {
+.spotlight-checklist.checklist-numbered .spotlight-checklist-item-done .spotlight-checklist-check::after {
   color: transparent;
 }
 
-.driver-checklist.checklist-numbered .driver-checklist-item-done .driver-checklist-check {
-  border-color: var(--driver-checklist-color, #2d2d2d);
+.spotlight-checklist.checklist-numbered .spotlight-checklist-item-done .spotlight-checklist-check {
+  border-color: var(--spotlight-checklist-color, #2d2d2d);
 }

@@ -25,7 +25,7 @@ Have a look at the [theming guide](/docs/theming#styling-popover) for a detailed
     nextBtnText: 'Next &rarr;',
     doneBtnText: 'Done',
     showButtons: ['next', 'previous'],
-    popoverClass: 'driverjs-theme'
+    popoverClass: 'spotlight-theme'
   }}
   tour={[
     {
@@ -64,7 +64,7 @@ Have a look at the [theming guide](/docs/theming#styling-popover) for a detailed
   import "spotlight.js/dist/spotlight.css";
 
   const tour = spotlight({
-    popoverClass: 'driverjs-theme'
+    popoverClass: 'spotlight-theme'
   });
 
   tour.highlight({
@@ -80,22 +80,22 @@ Have a look at the [theming guide](/docs/theming#styling-popover) for a detailed
 Here is the CSS used for the above example:
 
 ```css
-.spotlight-popover.driverjs-theme {
+.spotlight-popover.spotlight-theme {
   background-color: #fde047;
   color: #000;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-title {
+.spotlight-popover.spotlight-theme .spotlight-popover-title {
   font-size: 20px;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-title,
-.spotlight-popover.driverjs-theme .spotlight-popover-description,
-.spotlight-popover.driverjs-theme .spotlight-popover-progress-text {
+.spotlight-popover.spotlight-theme .spotlight-popover-title,
+.spotlight-popover.spotlight-theme .spotlight-popover-description,
+.spotlight-popover.spotlight-theme .spotlight-popover-progress-text {
   color: #000;
 }
 
-.spotlight-popover.driverjs-theme button:not(.spotlight-popover-close-btn) {
+.spotlight-popover.spotlight-theme button:not(.spotlight-popover-close-btn) {
   flex: 1;
   text-align: center;
   background-color: #000;
@@ -107,37 +107,37 @@ Here is the CSS used for the above example:
   border-radius: 6px;
 }
 
-.spotlight-popover.driverjs-theme button:not(.spotlight-popover-close-btn):hover {
+.spotlight-popover.spotlight-theme button:not(.spotlight-popover-close-btn):hover {
   background-color: #000;
   color: #ffffff;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-navigation-btns {
+.spotlight-popover.spotlight-theme .spotlight-popover-navigation-btns {
   justify-content: space-between;
   gap: 3px;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-close-btn {
+.spotlight-popover.spotlight-theme .spotlight-popover-close-btn {
   color: #9b9b9b;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-close-btn:hover {
+.spotlight-popover.spotlight-theme .spotlight-popover-close-btn:hover {
   color: #000;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-arrow-side-left.spotlight-popover-arrow {
+.spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-left.spotlight-popover-arrow {
   border-left-color: #fde047;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-arrow-side-right.spotlight-popover-arrow {
+.spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-right.spotlight-popover-arrow {
   border-right-color: #fde047;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-arrow-side-top.spotlight-popover-arrow {
+.spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-top.spotlight-popover-arrow {
   border-top-color: #fde047;
 }
 
-.spotlight-popover.driverjs-theme .spotlight-popover-arrow-side-bottom.spotlight-popover-arrow {
+.spotlight-popover.spotlight-theme .spotlight-popover-arrow-side-bottom.spotlight-popover-arrow {
   border-bottom-color: #fde047;
 }
 ```
@@ -229,7 +229,7 @@ the quick win, or your own class for a full theme.
 
 ### Accent Color
 
-Set the `--driver-checklist-color` variable to recolor the progress bar, the
+Set the `--spotlight-checklist-color` variable to recolor the progress bar, the
 ticks and the focus rings while keeping the default look:
 
 <ChecklistSample
@@ -241,7 +241,7 @@ ticks and the focus rings while keeping the default look:
 
 ```css
 :root {
-  --driver-checklist-color: #16a34a;
+  --spotlight-checklist-color: #16a34a;
 }
 ```
 
@@ -273,36 +273,36 @@ Its CSS, and more themes ready to copy, are on the
 These are the classes you can target:
 
 ```css
-.driver-checklist {}                  /* The widget, positioned in a corner */
-.driver-checklist-bottom-right {}     /* or -bottom-left, -top-right, -top-left */
-.driver-checklist-complete {}         /* Added once every item is done */
+.spotlight-checklist {}                  /* The widget, positioned in a corner */
+.spotlight-checklist-bottom-right {}     /* or -bottom-left, -top-right, -top-left */
+.spotlight-checklist-complete {}         /* Added once every item is done */
 
-.driver-checklist-launcher {}         /* The button that opens the panel */
-.driver-checklist-launcher-text {}
-.driver-checklist-launcher-count {}   /* "1/4" */
+.spotlight-checklist-launcher {}         /* The button that opens the panel */
+.spotlight-checklist-launcher-text {}
+.spotlight-checklist-launcher-count {}   /* "1/4" */
 
-.driver-checklist-panel {}
-.driver-checklist-header {}
-.driver-checklist-title {}
-.driver-checklist-description {}
-.driver-checklist-close-btn {}
+.spotlight-checklist-panel {}
+.spotlight-checklist-header {}
+.spotlight-checklist-title {}
+.spotlight-checklist-description {}
+.spotlight-checklist-close-btn {}
 
-.driver-checklist-progress {}
-.driver-checklist-progress-bar {}
-.driver-checklist-progress-fill {}
-.driver-checklist-progress-text {}    /* "1 of 4" */
+.spotlight-checklist-progress {}
+.spotlight-checklist-progress-bar {}
+.spotlight-checklist-progress-fill {}
+.spotlight-checklist-progress-text {}    /* "1 of 4" */
 
-.driver-checklist-items {}
-.driver-checklist-item {}
-.driver-checklist-item-done {}        /* Added to an item once it is done */
-.driver-checklist-check {}            /* The circle; a button with allowManualComplete */
-.driver-checklist-item-trigger {}     /* The item's link, button or plain row */
-.driver-checklist-item-title {}
-.driver-checklist-item-description {}
+.spotlight-checklist-items {}
+.spotlight-checklist-item {}
+.spotlight-checklist-item-done {}        /* Added to an item once it is done */
+.spotlight-checklist-check {}            /* The circle; a button with allowManualComplete */
+.spotlight-checklist-item-trigger {}     /* The item's link, button or plain row */
+.spotlight-checklist-item-title {}
+.spotlight-checklist-item-description {}
 ```
 
-The widget also sets `--driver-checklist-progress` to the progress as a
+The widget also sets `--spotlight-checklist-progress` to the progress as a
 percentage, for progress designs drawn in CSS, like the
 [progress ring](/docs/checklist-themes#progress-ring). The font follows the
-popover's `--driver-popover-font-family` variable. See the
+popover's `--spotlight-popover-font-family` variable. See the
 [Checklists guide](/docs/checklists#customizing) for position and text options.
